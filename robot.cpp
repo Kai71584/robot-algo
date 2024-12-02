@@ -8,28 +8,18 @@ class robot
 {
 private:
     /* data */
-    char direction;
+    string direction;
 
 public:
-    robot(char dirInit)
+    robot(string dirInit)
     {
-        switch (dirInit)
+        if (dirInit == "NN" || dirInit == "OO" || dirInit == "SS" || dirInit == "EE")
         {
-        case 'N':
-        case 'n':
-        case 'O':
-        case 'o':
-        case 'S':
-        case 's':
-        case 'E':
-        case 'e':
             direction = dirInit;
-            break;
-
-        default:
-            cout << "Direction non reconnue, le robot pointe vers le nord par défaut" << endl;
-            direction = 'N';
-            break;
+        }
+        else
+        {
+            direction = "EE";
         }
     };
     ~robot();
@@ -48,171 +38,27 @@ public:
     {
         cout << "roter 90 degrées gauche" << endl;
 
-        switch (direction)
+        if (direction=="NN")
         {
-        case 'N':
-        case 'n':
-            direction = 'O';
-            break;
-
-        case 'O':
-        case 'o':
-            direction = 'S';
-            break;
-
-        case 'S':
-        case 's':
-            direction = 'E';
-            break;
-
-        case 'E':
-        case 'e':
-            direction = 'N';
-            break;
-
-        default:
-            break;
+            direction = "OO";
+        } else if (direction=="OO")
+        {
+            direction = "SS";
+        }else if (direction=="SS")
+        {
+            direction = "EE";
+        }else if (direction=="EE")
+        {
+            direction = "NN";
         }
+        
+        
     }
 
     void roterD()
     {
         cout << "roter 90 degrées droite" << endl;
 
-        switch (direction)
-        {
-        case 'N':
-        case 'n':
-            direction = 'E';
-            break;
-
-        case 'O':
-        case 'o':
-            direction = 'N';
-            break;
-
-        case 'S':
-        case 's':
-            direction = 'O';
-            break;
-
-        case 'E':
-        case 'e':
-            direction = 'S';
-            break;
-
-        default:
-            break;
-        }
-    }
-
-    void pointeVers(char versDir)
-    {
-        //vérifie ou le robot veux aller et tourne selon ou le robot pointe déjà
-        switch (versDir)
-        {
-        case 'N':
-        case 'n':
-            switch (direction)
-            {
-            case 'O':
-            case 'o':
-                roterD();
-                break;
-
-            case 'S':
-            case 's':
-                roterD();
-                roterD();
-                break;
-
-            case 'E':
-            case 'e':
-                roterG();
-                break;
-
-            default:
-                break;
-            }
-            break;
-
-        case 'O':
-        case 'o':
-            switch (direction)
-            {
-            case 'N':
-            case 'n':
-                roterG();
-                break;
-
-            case 'S':
-            case 's':
-                roterD();
-                break;
-
-            case 'E':
-            case 'e':
-                roterG();
-                roterG();
-                break;
-
-            default:
-                break;
-            }
-            break;
-
-        case 'S':
-        case 's':
-            switch (direction)
-            {
-            case 'N':
-            case 'n':
-                roterG();
-                roterG();
-                break;
-
-            case 'O':
-            case 'o':
-                roterG();
-                break;
-
-            case 'E':
-            case 'e':
-                roterD();
-                break;
-
-            default:
-                break;
-            }
-            break;
-
-        case 'E':
-        case 'e':
-            switch (direction)
-            {
-            case 'N':
-            case 'n':
-                roterD();
-                break;
-
-            case 'O':
-            case 'o':
-                roterG();
-                roterG();
-                break;
-
-            case 'S':
-            case 's':
-                roterG();
-                break;
-
-            default:
-                break;
-            }
-            break;
-
-        default:
-            break;
-        }
+        //faire comme roterG
     }
 };

@@ -6,8 +6,31 @@
 #include "Etiquette.h"
 #include <stack>
 #include <queue>
+#include <vector>
+#include <utility>
 using namespace std;
 
+struct pair_hash {
+    template <typename T1, typename T2>
+    std::size_t operator (const std::pair<T1, T2>& p) const {
+        auto h1 = std::hash<T1>{}(p.first);  // Hachage du premier élément de la paire
+        auto h2 = std::hash<T2>{}(p.second); // Hachage du second élément de la paire
+        // Combine les deux hachages en un seul
+        return h1 ^ (h2 << 1);  // Hachage combiné avec un décalage pour réduire les collisions
+    }
+};
+struct Position {
+    int x;
+
+    int y;
+
+    Position(int x1, int y1){
+
+        x=x1;
+
+        y=y1;
+    };
+};
 class Coord
 {
 public:
@@ -24,6 +47,8 @@ public:
 
         valeur = valeurs;
     };
+
+    Coord(int )
 
     int getX()
     {
@@ -82,6 +107,108 @@ public:
         sommets[sommet] = etiq;
     }
 
+     void ajouterSommett(int x, int y, const Etiquette &etiq)
+    {
+        if (sommets.find(sommet) != sommets.end())
+        {
+            throw std::runtime_error("Le sommet existe déjà.");
+        }
+
+
+
+        //sommets[p] = etiq;
+
+
+        positions.insert(make_pair(x,y));
+
+        positions[{x,y}]=etiq;
+    }
+
+    void arreterr(pair<int,int>& p1, pair<int,int>& p2){
+
+        string a="fdsidfhsdkjf";
+
+        voisin[p1].insert(p2,a)
+    }
+
+    void taf(){
+        string a="sfsd";
+        set<Voisin> voisinage;
+        int tab[8][9];
+        n=8;
+        g=9;
+        for(int i=0;i<n; i++){
+            for(int j=0;j<g;i++){
+
+                if(tab[i][j]==1){
+
+                    if(tab[i+1][j]==1){
+                        voisinage.insert(Voisin(make_pair(i+1,j),a));
+                    }
+                    if(tab[i-1][j]==1){
+                        voisinage.insert(Voisin(make_pair(i+1,j),a));
+                    }
+                    if(tab[i][j+1]==1){
+                        voisinage.insert(Voisin(make_pair(i+1,j),a));
+                    }
+                    if(tab[i][j-1]==1){
+                        voisinage.insert(Voisin(make_pair(i+1,j),a));
+                    }
+                    if(tab[i-1][j-1]==1){
+                        voisinage.insert(Voisin(make_pair(i+1,j),a));
+                    }
+                    if(tab[i+1][j-1]==1){
+                        voisinage.insert(Voisin(make_pair(i+1,j),a));
+                    }
+                    if(tab[i+1][j+1]==1){
+                        voisinage.insert(Voisin(make_pair(i+1,j),a));
+                    }
+                    if(tab[i-1][j+1]==1){
+                        voisinage.insert(Voisin(make_pair(i-1,j+1),a));
+                    }
+
+                }
+                listeadjacence[make_pair(i,j)].insert(voisinage);
+            }
+        }
+    }
+
+
+
+
+
+    void voisinde(pair<int,int>& p){
+
+        auto it = listeadjacence.find(p);
+        if (it != listeadjacence.end()) {
+        for (const auto& voisin : it->second) {
+        std::cout << "(" << voisin->.first.first << ", " << voisin->first.second << ")" << "nom" << voisin->second<<std::endl;
+        }
+        }
+        else {
+            cout << "Introuvable" << endl;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     void AjouterSommet2(Coord coord)
     {
 
@@ -95,6 +222,8 @@ public:
 
         
         sommets1[pair<x,y>];
+
+
     }
 
     void AjouterArete3(Coord coord1, Coord coord2){
@@ -153,9 +282,15 @@ public:
         aretess[i1][j1].insert(i2, j2, c);
     }
 
-    void AjouterArete3(const pair<int i1, int j1>, const pair<int i2, int j2>)
+    void AjouterArete4(const pair<int, int> p1, const pair<int, int> p2)
     {
 
+        int i1=p1.first
+        int j1=p1.second;
+
+        int i2=p2.first;
+        int j2=p2.second;
+        
         c char;
         if (i2 > i1 && j1 == j2)
         {
@@ -178,7 +313,7 @@ public:
             c = 'N';
         }
 
-        arretesss.(pair<i1, j1>, pair<i2, j2>, c);
+        arretesss.(p1, p2, c);
     }
 
     void construiregraphe(int tableau[][]){
@@ -232,6 +367,15 @@ public:
             throw std::runtime_error("Un ou plusieurs sommets n'existent pas.");
         }
         aretes[u][v] = etiq;
+    }
+
+    void ajouterAretet(Position p1, Position p2, const Etiquette &etiq)
+    {
+        if (sommets.find(p1) == sommets.end() || sommets.find(p2) == sommets.end())
+        {
+            throw std::runtime_error("Un ou plusieurs sommets n'existent pas.");
+        }
+        aretes[p1][p2] = etiq;
     }
 
     // Modifie l'étiquette d'un sommet existant
@@ -391,10 +535,14 @@ private:
 
     std::unordered_map<pair<int, int>, pair<int, int>, char> arretessss;
 
-
+    unordered_map<
     std::unordered_map<Coord coordonnes>sommets1;
     std::unordered_map<Coord, std::unordered_map<Coord, char>> aretes11;
 
+   set::<pair<int,int>> positions;
 
+   set::<pair<int,int>, std::string> Voisin;
+
+   std::unordered_map<positions, vector<Voisin*>, pair_hash> listeadjacence;
 
 };

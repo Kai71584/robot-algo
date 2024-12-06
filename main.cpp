@@ -1,3 +1,10 @@
+/*
+fichier: main.cpp
+autheur: Pierre-Antoine Lajoie
+dernière MAJ: 2024-12-06 14:30
+description: parcours le labyrinthe avec un Robot
+*/
+
 #include <iostream>
 #include <unordered_map>
 #include <unordered_set>

@@ -1,9 +1,14 @@
 #include <iostream>
 #include <unordered_map>
 #include <unordered_set>
-//#include "graphe.h"
+//#include "graphe2.h"
 #include "robot.h"
 using namespace std;
+
+void labyrinthe(Robot r){
+    pair<int,int> depart;
+    pair<int,int> arrive;
+}
 
 
 int main(){

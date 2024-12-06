@@ -2,7 +2,7 @@
 #include <unordered_map>
 #include <unordered_set>
 using namespace std;
-;
+
 
 Robot::Robot(string dirInit)
 {

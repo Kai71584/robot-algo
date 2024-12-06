@@ -186,8 +186,6 @@ public:
 
 
 
-
-
     void voisinde(pair<int,int>& p){
 
         auto it = listeadjacence.find(p);
@@ -200,23 +198,6 @@ public:
             cout << "Introuvable" << endl;
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -543,21 +524,6 @@ private:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
    /* std::unordered_map<std::int, Etiquette> sommetsr;
 
     std::unordered_map(pair<int, int>) sommetssr;
@@ -573,9 +539,6 @@ private:
     unordered_map<
     std::unordered_map<Coord coordonnes>sommets1;
     std::unordered_map<Coord, std::unordered_map<Coord, char>> aretes11;*/
-
-
-
 
 
 };

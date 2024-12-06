@@ -1,11 +1,16 @@
 #include <iostream>
 #include <unordered_map>
 #include <unordered_set>
+#include "graphe.h"
+#include "robot.h"
 using namespace std;
-;
+
 
 int main(){
-    
+
+    Robot r;
+
+    r.avancer();
     
     cout<< "Ceci est notre main" ;
     return 0;

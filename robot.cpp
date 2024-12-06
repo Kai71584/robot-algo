@@ -1,40 +1,35 @@
-#include <iostream>
+#include "robot.h"
+
 #include <unordered_map>
 #include <unordered_set>
 using namespace std;
 ;
 
-class robot
+Robot::Robot(string dirInit)
 {
-private:
-    /* data */
-    string direction;
-
-public:
-    robot(string dirInit)
+    if (dirInit == "NN" || dirInit == "OO" || dirInit == "SS" || dirInit == "EE")
     {
-        if (dirInit == "NN" || dirInit == "OO" || dirInit == "SS" || dirInit == "EE")
-        {
-            direction = dirInit;
-        }
-        else
-        {
-            direction = "EE";
-        }
-    };
-    ~robot();
-
-    void avancer()
-    {
-        cout << "avance de 10cm" << endl;
+        direction = dirInit;
     }
+    else
+    {
+        direction = "EE";
+    }
+}
 
-    void reculer()
+Robot::~Robot() {};
+
+void Robot::avancer()
+{
+    cout << "avance de 10cm" << endl;
+}
+
+void Robot::reculer()
     {
         cout << "recule de 10cm" << endl;
     }
 
-    void roterG()
+void Robot::roterG()
     {
         cout << "roter 90 degrées gauche" << endl;
 
@@ -55,7 +50,7 @@ public:
         
     }
 
-    void roterD()
+void Robot::roterD()
     {
         cout << "roter 90 degrées droite" << endl;
 
@@ -73,4 +68,3 @@ public:
             direction = "NN";
         }
     }
-};

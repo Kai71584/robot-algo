@@ -12,7 +12,7 @@ using namespace std;
 
 struct pair_hash {
     template <typename T1, typename T2>
-    std::size_t operator (const std::pair<T1, T2>& p) const {
+    std::size_t operator() (const std::pair<T1, T2>& p) const {
         auto h1 = std::hash<T1>{}(p.first);  // Hachage du premier élément de la paire
         auto h2 = std::hash<T2>{}(p.second); // Hachage du second élément de la paire
         // Combine les deux hachages en un seul
@@ -34,9 +34,7 @@ struct Position {
 class Coord
 {
 public:
-    Coord() {
-
-    };
+    Coord() :x(0),y(0),valeur(0){};
 
     Coord(int coordX, int coordY, int valeurs)
     {
@@ -48,7 +46,7 @@ public:
         valeur = valeurs;
     };
 
-    Coord(int )
+    
 
     int getX()
     {
@@ -128,7 +126,12 @@ public:
 
         string a="fdsidfhsdkjf";
 
-        voisin[p1].insert(p2,a)
+// Check if p1 exists in voisin, if not, initialize it
+    if (voisin.find(p1) == voisin.end()) {
+        voisin[p1] = std::set<pair<int, int>>(); // Initialize with an empty set
+    }
+
+        voisin[p1].insert(make_pair(p2,a));
     }
 
     void taf(){
@@ -138,11 +141,11 @@ public:
         n=8;
         g=9;
         for(int i=0;i<n; i++){
-            for(int j=0;j<g;i++){
+            for(int j=0;j<g;j++){
 
                 if(tab[i][j]==1){
 
-                    if(tab[i+1][j]==1){
+                    if(i+1<n &&tab[i+1][j]==1){
                         //sud
                         a="SS";
                         voisinage.insert(Voisin(make_pair(i+1,j),a));

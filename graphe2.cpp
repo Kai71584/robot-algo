@@ -125,6 +125,35 @@ while(!pile.empty()){
 
     cout << pcourant.first << "," << pcourant.second << " ";
 
+            vector<voisins> bb = voisinde(pcourant);
+            unordered_set<pair<int,int>> abc;
+
+            for(voisins aa: bb){
+                abc.insert(aa.positionnement);
+
+            }
+
+        for(pair<int,int> elem:abc){
+            if(visite.find(elem)==visite.end()){
+                //si élément n'est pas trouvé dans visite
+            }
+        }
+
+
+        if(visite == abc){ //regarde s'il tous les voisins de ce coin la sont fait
+        stack<pair<int,int>> p2;
+            for(pair<int,int> d :visite){
+                p2.push(d);
+            }
+
+            pcourant =p2.top();
+            p2.pop();
+
+            //recommencer tant que visite == abc
+            //cela veut dire recommence tant que tous les visites du voisinage ne sont pas faite
+            //pas terminer manque une boucle
+        }
+
       for (voisins &voisinsommet : voisinde(pcourant))//récupère les voisins du sommetcourant
         {
             if (visite.find(voisinsommet.positionnement) == visite.end())//vérifie qu'on n'a pas encore visité les voisins de sommetcourant

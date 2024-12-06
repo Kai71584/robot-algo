@@ -143,25 +143,36 @@ public:
                 if(tab[i][j]==1){
 
                     if(tab[i+1][j]==1){
+                        //sud
+                        a="SS";
                         voisinage.insert(Voisin(make_pair(i+1,j),a));
                     }
                     if(tab[i-1][j]==1){
-                        voisinage.insert(Voisin(make_pair(i+1,j),a));
+                        //nord
+                        a="NN";
+                        voisinage.insert(Voisin(make_pair(i-1,j),a));
                     }
                     if(tab[i][j+1]==1){
-                        voisinage.insert(Voisin(make_pair(i+1,j),a));
+                        //est
+                        a="EE";
+                        voisinage.insert(Voisin(make_pair(i,j+1),a));
                     }
                     if(tab[i][j-1]==1){
-                        voisinage.insert(Voisin(make_pair(i+1,j),a));
+                        //ouest
+                        a="OO";
+                        voisinage.insert(Voisin(make_pair(i,j-1),a));
                     }
+
+
+
                     if(tab[i-1][j-1]==1){
-                        voisinage.insert(Voisin(make_pair(i+1,j),a));
+                        voisinage.insert(Voisin(make_pair(i-1,j-1),a));
                     }
                     if(tab[i+1][j-1]==1){
-                        voisinage.insert(Voisin(make_pair(i+1,j),a));
+                        voisinage.insert(Voisin(make_pair(i+1,j-1),a));
                     }
                     if(tab[i+1][j+1]==1){
-                        voisinage.insert(Voisin(make_pair(i+1,j),a));
+                        voisinage.insert(Voisin(make_pair(i+1,j+1),a));
                     }
                     if(tab[i-1][j+1]==1){
                         voisinage.insert(Voisin(make_pair(i-1,j+1),a));
@@ -523,13 +534,37 @@ private:
     // Map d'adjacence pour les arêtes, chaque arête ayant une étiquette d'objet
     std::unordered_map<std::string, std::unordered_map<std::string, Etiquette>> aretes;
 
-    std::unordered_map<std::int, Etiquette> sommetsr;
+
+   set::<pair<int,int>> positions;
+
+   set::<pair<int,int>, std::string> Voisin;
+
+   std::unordered_map<positions, vector<Voisin*>, pair_hash> listeadjacence;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   /* std::unordered_map<std::int, Etiquette> sommetsr;
 
     std::unordered_map(pair<int, int>) sommetssr;
 
-    std::unordered_map<std::int, std::unordered_map<std::int /*, Etiquette std::char*/>> sommets;
+    std::unordered_map<std::int, std::unordered_map<std::int /*, Etiquette std::char*///>> sommets;
 
-    std::unordered_map<pair<int, int>> sommets2;
+    /*std::unordered_map<pair<int, int>> sommets2;
 
     std::unordered_map < std::int, std::unordered_map<std::int, <std::unordered_map<std::int, std::unordered_map<std::int, std::char>>>> aretess;
 
@@ -537,12 +572,10 @@ private:
 
     unordered_map<
     std::unordered_map<Coord coordonnes>sommets1;
-    std::unordered_map<Coord, std::unordered_map<Coord, char>> aretes11;
+    std::unordered_map<Coord, std::unordered_map<Coord, char>> aretes11;*/
 
-   set::<pair<int,int>> positions;
 
-   set::<pair<int,int>, std::string> Voisin;
 
-   std::unordered_map<positions, vector<Voisin*>, pair_hash> listeadjacence;
+
 
 };

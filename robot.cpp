@@ -59,6 +59,18 @@ public:
     {
         cout << "roter 90 degrées droite" << endl;
 
-        //faire comme roterG
+        if (direction=="NN")
+        {
+            direction = "EE";
+        } else if (direction=="EE")
+        {
+            direction = "SS";
+        }else if (direction=="SS")
+        {
+            direction = "OO";
+        }else if (direction=="OO")
+        {
+            direction = "NN";
+        }
     }
 };

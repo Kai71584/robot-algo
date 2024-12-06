@@ -4,9 +4,9 @@ ODIR= .
 APPSDIR= .
 CC=g++
 CFLAGS=   -Wall -I$(IDIR) -c # CFLAGS défini les options de compilation.
-_DEPS= $(IDIR)/robot.cpp
+_DEPS= $(IDIR)/robot.h
 
-_OBJS= main.o
+_OBJS=robot.o main.o 
 
 all: main.exe
 

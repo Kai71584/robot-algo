@@ -1,5 +1,4 @@
 #include "robot.h"
-
 #include <unordered_map>
 #include <unordered_set>
 using namespace std;
@@ -17,7 +16,9 @@ Robot::Robot(string dirInit)
     }
 }
 
-Robot::~Robot() {};
+Robot::Robot() {
+    direction = "EE";
+};
 
 void Robot::avancer()
 {
@@ -68,3 +69,8 @@ void Robot::roterD()
             direction = "NN";
         }
     }
+
+void Robot::afficheDir()
+{
+    cout << "je pointe vers " << direction << endl;
+}

@@ -11,7 +11,9 @@ private:
 
 public:
     Robot(string dirInit);
-    ~Robot();
+    Robot();
+
+    void afficheDir();
 
     void avancer();
 

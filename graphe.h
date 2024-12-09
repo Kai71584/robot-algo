@@ -26,11 +26,18 @@ struct pair_hash
     }
 };
 
-struct voisins
+class Voisins
 {
-
+    private:
     pair<int, int> positionnement;
     string direction;
+    public:
+    pair<int,int> getPositionnement();
+    void setPositionnement(pair<int,int>);
+    string getDirection();
+    void setDirection(string);
+
+    
 };
 /*struct Voisin {
     int destination; // Noeud de destination
@@ -61,7 +68,7 @@ public:
 
     void taf();
 
-    std::vector<voisins> voisinde(pair<int, int>);
+    std::vector<Voisins> voisinde(pair<int, int>);
 
     void DFS(pair<int, int>);
 
@@ -72,5 +79,5 @@ private:
 
     std::unordered_map<pair<int, int>, vector<pair<int, int>, std::string>, pair_hash> listeadjacence;
 
-    std::unordered_map<pair<int, int>, set<voisins>, pair_hash> listeadjacence2;
+    std::unordered_map<pair<int, int>, set<Voisins>, pair_hash> listeadjacence2;
 };

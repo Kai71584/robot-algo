@@ -15,6 +15,24 @@ graphe::graphe()
 {
 }
 
+
+
+pair<int,int> Voisins::getPositionnement(){
+    return this->positionnement;
+}
+
+void Voisins::setPositionnement(pair<int,int> position){
+    this->positionnement = position;
+}
+
+string Voisins::getDirection(){
+    return this->direction;
+}
+
+void Voisins::setDirection(string d){
+    this-> direction = d;
+}
+
 void graphe::ajouterSommet(int a, int b)
 {
 
@@ -31,9 +49,9 @@ void graphe::ajouterSommet(int a, int b)
 void graphe::ajouterArrete(pair<int, int> p1, pair<int, int> p2, string a)
 {
 
-    voisins f;
-    f.positionnement = p2;
-    f.direction = a;
+    Voisins f;
+    f.setPositionnement(p2);
+    f.setDirection(a);
     // voisin[p1].insert(make_pair(p2,a));
 
     listeadjacence2[p1].insert(f);
@@ -91,10 +109,10 @@ void graphe::taf()
     }
 };
 
-vector<voisins> graphe::voisinde(pair<int, int> p1)
+vector<Voisins> graphe::voisinde(pair<int, int> p1)
 {
 
-    vector<voisins> voisinss;
+    vector<Voisins> voisinss;
 
     if (listeadjacence2.find(p1) != listeadjacence2.end())
     {
@@ -127,12 +145,12 @@ void graphe::DFS(pair<int, int> p1)
 
         cout << pcourant.first << "," << pcourant.second << " ";
 
-        vector<voisins> bb = voisinde(pcourant);
-        unordered_set<pair<int, int>> abc;
+        vector<Voisins> bb = voisinde(pcourant);
+        unordered_set<pair<int, int>, pair_hash> abc;
 
-        for (voisins aa : bb)
+        for (Voisins aa : bb)
         {
-            abc.insert(aa.positionnement);
+            abc.insert(aa.getPositionnement());
         }
 
         for (pair<int, int> elem : abc)
@@ -159,13 +177,13 @@ void graphe::DFS(pair<int, int> p1)
             // pas terminer manque une boucle
         }
 
-        for (voisins &voisinsommet : voisinde(pcourant)) // récupère les voisins du sommetcourant
+        for (Voisins &voisinsommet : voisinde(pcourant)) // récupère les voisins du sommetcourant
         {
-            if (visite.find(voisinsommet.positionnement) == visite.end()) // vérifie qu'on n'a pas encore visité les voisins de sommetcourant
+            if (visite.find(voisinsommet.getPositionnement()) == visite.end()) // vérifie qu'on n'a pas encore visité les voisins de sommetcourant
             {
 
-                pile.push(voisinsommet.positionnement);     // ajoute voisinsommet dans la pile
-                visite.insert(voisinsommet.positionnement); // ajoute voisinsommet dans visite
+                pile.push(voisinsommet.getPositionnement());     // ajoute voisinsommet dans la pile
+                visite.insert(voisinsommet.getPositionnement()); // ajoute voisinsommet dans visite
             }
         }
     }

@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 #include <unordered_map>
 #include <unordered_set>
@@ -542,5 +543,5 @@ private:
     std::unordered_map<Coord coordonnes>sommets1;
     std::unordered_map<Coord, std::unordered_map<Coord, char>> aretes11;*/
 
-
-};
+/*
+}; */

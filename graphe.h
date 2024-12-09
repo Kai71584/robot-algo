@@ -36,25 +36,14 @@ class Voisins
     void setPositionnement(pair<int,int>);
     string getDirection();
     void setDirection(string);
+    // Définition de l'opérateur < pour permettre la comparaison
+    bool operator<(const Voisins& other) const {
+        return positionnement < other.positionnement; // Comparaison par position
+    }
 
     
 };
-/*struct Voisin {
-    int destination; // Noeud de destination
-    string label; // Étiquette optionnelle pour l'arête
-};
-struct Position {
-    int x;
 
-    int y;
-
-    Position(int x1, int y1){
-
-        x=x1;
-
-        y=y1;
-    };
-};*/
 
 class graphe
 {

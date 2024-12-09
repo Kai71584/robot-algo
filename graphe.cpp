@@ -111,7 +111,7 @@ vector<voisins> graphe::voisinde(pair<int, int> p1)
 void graphe::DFS(pair<int, int> p1)
 {
 
-    unordered_set<std::pair<int, int>> visite;
+    unordered_set<std::pair<int, int>,pair_hash> visite;
 
     stack<pair<int, int>> pile;
 

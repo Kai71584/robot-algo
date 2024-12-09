@@ -159,7 +159,7 @@ void graphe::DFS(pair<int, int> p1)
 
         cout << pcourant.first << "," << pcourant.second << " " <<endl;
 
-        vector<Voisins> bb = voisinde(pcourant);
+        /*vector<Voisins> bb = voisinde(pcourant);
         unordered_set<pair<int, int>, pair_hash> abc;
 
         for (Voisins aa : bb)
@@ -189,7 +189,7 @@ void graphe::DFS(pair<int, int> p1)
             // recommencer tant que visite == abc
             // cela veut dire recommence tant que tous les visites du voisinage ne sont pas faite
             // pas terminer manque une boucle
-        }
+        }*/
 
         for (Voisins &voisinsommet : voisinde(pcourant)) // récupère les voisins du sommetcourant
         {

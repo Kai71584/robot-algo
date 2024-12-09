@@ -37,6 +37,9 @@ int main(){
     //on popule le graph
     monGraphe.creerConnexions(monTab);
     
+    pair<int,int> p1 = {1,1};
+
+    monGraphe.DFS(p1);
 
     monRobot.avancer();
     monRobot.afficheDir();

@@ -64,9 +64,15 @@ public:
 private:
     set<pair<int, int>> positions;
 
-    unordered_set<pair<int, int>, std::string> voisin;
 
-    std::unordered_map<pair<int, int>, vector<pair<int, int>, std::string>, pair_hash> listeadjacence;
 
     std::unordered_map<pair<int, int>, set<Voisins>, pair_hash> listeadjacence2;
 };
+
+
+
+
+
+    //unordered_set<pair<int, int>, std::string> voisin;
+
+    //std::unordered_map<pair<int, int>, vector<pair<int, int>, std::string>, pair_hash> listeadjacence;

@@ -9,6 +9,7 @@
 #include <vector>
 #include <utility>
 #include <set>
+
 using namespace std;
 
 graphe::graphe()
@@ -21,7 +22,7 @@ pair<int,int> Voisins::getPositionnement(){
     return this->positionnement;
 }
 
-void Voisins::setPositionnement(pair<int,int> position){
+void Voisins::setPositionnement(std::pair<int,int> position){
     this->positionnement = position;
 }
 
@@ -36,7 +37,7 @@ void Voisins::setDirection(string d){
 void graphe::ajouterSommet(int a, int b)
 {
 
-    pair<int, int> t = make_pair(a, b);
+    std::pair<int, int> t = make_pair(a, b);
 
     if (positions.find(t) != positions.end())
     {

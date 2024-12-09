@@ -30,7 +30,7 @@ class Voisins
 {
     private:
     pair<int, int> positionnement;
-    string direction;
+    std::string direction;
     public:
     pair<int,int> getPositionnement();
     void setPositionnement(pair<int,int>);

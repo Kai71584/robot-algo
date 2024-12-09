@@ -25,7 +25,7 @@ void Voisins::setPositionnement(pair<int,int> position){
     this->positionnement = position;
 }
 
-string Voisins::getDirection(){
+std::string Voisins::getDirection(){
     return this->direction;
 }
 
@@ -46,7 +46,7 @@ void graphe::ajouterSommet(int a, int b)
     positions.insert(t);
 };
 
-void graphe::ajouterArrete(pair<int, int> p1, pair<int, int> p2, string a)
+void graphe::ajouterArrete(pair<int, int> p1, pair<int, int> p2, std::string a)
 {
 
     Voisins f;
@@ -59,7 +59,7 @@ void graphe::ajouterArrete(pair<int, int> p1, pair<int, int> p2, string a)
 
 void graphe::taf()
 {
-    string a;
+    std::string a;
     int tab[8][9];
     int n = 8;
     int g = 9;

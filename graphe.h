@@ -55,7 +55,7 @@ public:
 
     void ajouterArrete(pair<int, int>, pair<int, int>, string);
 
-    void taf();
+    void creerConnexions(int[][8]);
 
     std::vector<Voisins> voisinde(pair<int, int>);
 
@@ -63,8 +63,6 @@ public:
 
 private:
     set<pair<int, int>> positions;
-
-
 
     std::unordered_map<pair<int, int>, set<Voisins>, pair_hash> listeadjacence2;
 };

@@ -8,24 +8,37 @@ description: parcours le labyrinthe avec un Robot
 #include <iostream>
 #include <unordered_map>
 #include <unordered_set>
-//#include "graphe.h"
+#include "graphe.h"
 #include "robot.h"
 using namespace std;
 
-void labyrinthe(Robot r,pair<int,int> depart,pair<int,int> arrive){
+void labyrinthe(Robot r,graphe g, pair<int,int> depart, pair<int,int> arrive){
     
 }
 
 
 int main(){
 
-    Robot r = Robot("NN");
+    Robot monRobot = Robot("NN");
+    graphe monGraphe;
 
-    r.avancer();
-    r.afficheDir();
-    r.roterD();
-    r.avancer();
-    r.afficheDir();
+    int monTab[7][8] = {
+        {1, 1, 1, 1, 1, 1, 1, 1},
+        {1, 0, 0, 0, 1, 1, 1, 1},
+        {1, 0, 1, 1, 0, 1, 0, 1},
+        {1, 0, 1, 0, 0, 0, 0, 1},
+        {1, 0, 0, 1, 0, 1, 0, 1},
+        {1, 0, 0, 0, 0, 0, 1, 1},
+        {1, 1, 1, 1, 1, 1, 1, 1}
+    };
+
+    
+
+    monRobot.avancer();
+    monRobot.afficheDir();
+    monRobot.roterD();
+    monRobot.avancer();
+    monRobot.afficheDir();
     
     cout<< "Ceci est notre main" ;
     return 0;

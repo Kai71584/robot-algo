@@ -58,12 +58,12 @@ void graphe::ajouterArrete(pair<int, int> p1, pair<int, int> p2, std::string a)
     listeadjacence2[p1].insert(f);
 };
 
-void graphe::taf()
+void graphe::creerConnexions(int tab[][8])
 {
     std::string a;
-    int tab[8][9];
-    int n = 8;
-    int g = 9;
+    
+    int n = 7;
+    int g = 8;
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < g; j++)

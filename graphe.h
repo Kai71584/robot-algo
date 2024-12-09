@@ -11,11 +11,11 @@
 using namespace std;
 struct pair_hash
 {
-    // template <typename T1, typename T2>
-    std::size_t operator()(const std::pair<int, int> &p) const
+     template <typename T1, typename T2>
+    std::size_t operator()(const std::pair<T1, T2> &p) const
     {
-        auto h1 = std::hash<int>{}(p.first);  // Hachage du premier élément de la paire
-        auto h2 = std::hash<int>{}(p.second); // Hachage du second élément de la paire
+        auto h1 = std::hash<T1>{}(p.first);  // Hachage du premier élément de la paire
+        auto h2 = std::hash<T2>{}(p.second); // Hachage du second élément de la paire
         // Combine les deux hachages en un seul
         return h1 ^ h2; // Hachage combiné avec un décalage pour réduire les collisions
     }

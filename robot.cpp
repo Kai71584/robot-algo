@@ -91,5 +91,5 @@ void Robot::roterD()
 // affiche la direction dans laquelle le robot
 void Robot::afficheDir()
 {
-    cout << "je pointe vers " << direction << endl;
+    cout << direction;
 }

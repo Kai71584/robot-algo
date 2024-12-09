@@ -1,3 +1,10 @@
+/*
+fichier: robot.cpp
+autheur: William Roy
+dernière MAJ: 2024-12-09 15:00 William
+description: déclarations de la classe graphe
+*/
+
 #include <iostream>
 #include <unordered_map>
 #include <unordered_set>

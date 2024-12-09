@@ -1,3 +1,10 @@
+/*
+fichier: robot.cpp
+autheur: William Roy
+dernière MAJ: 2024-12-09 15:00 William
+description: fonctions de la classe graphe
+*/
+
 #include "graphe.h"
 #include <iostream>
 #include <unordered_map>

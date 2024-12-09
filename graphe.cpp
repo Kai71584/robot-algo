@@ -64,6 +64,19 @@ void graphe::creerConnexions(int tab[][8])
     
     int n = 7;
     int g = 8;
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < g; j++)
+        {
+
+            ajouterSommet(i,g);
+
+        
+        }
+        
+        }
+
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < g; j++)

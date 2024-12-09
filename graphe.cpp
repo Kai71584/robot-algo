@@ -70,7 +70,7 @@ void graphe::creerConnexions(int tab[][8])
         for (int j = 0; j < g; j++)
         {
 
-            ajouterSommet(i,g);
+            ajouterSommet(i,j);
 
         
         }
@@ -95,7 +95,7 @@ void graphe::creerConnexions(int tab[][8])
                     ajouterArrete(p1, p2, a);
                 }
 
-                if (tab[i - 1][j] == 0)
+                if (i-1>=0 && tab[i - 1][j] == 0)
                 {
                     // nord
                     a = "NN";
@@ -103,7 +103,7 @@ void graphe::creerConnexions(int tab[][8])
                     ajouterArrete(p1, p2, a);
                 }
 
-                if (tab[i][j + 1] == 0)
+                if (j + 1 < n &&tab[i][j + 1] == 0)
                 {
                     // est
                     a = "EE";
@@ -111,7 +111,7 @@ void graphe::creerConnexions(int tab[][8])
                     ajouterArrete(p1, p2, a);
                 }
 
-                if (tab[i][j - 1] == 0)
+                if (j-1>=0 && tab[i][j - 1] == 0)
                 {
                     // ouest
                     a = "OO";

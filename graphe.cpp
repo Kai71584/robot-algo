@@ -157,7 +157,7 @@ void graphe::DFS(pair<int, int> p1)
 
         pile.pop();
 
-        cout << pcourant.first << "," << pcourant.second << " ";
+        cout << pcourant.first << "," << pcourant.second << " " <<endl;
 
         vector<Voisins> bb = voisinde(pcourant);
         unordered_set<pair<int, int>, pair_hash> abc;

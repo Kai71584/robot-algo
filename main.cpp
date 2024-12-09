@@ -1,7 +1,7 @@
 /*
 fichier: main.cpp
 autheur: Pierre-Antoine Lajoie
-dernière MAJ: 2024-12-06 14:30
+dernière MAJ: 2024-12-06 15:00
 description: parcours le labyrinthe avec un Robot
 */
 
@@ -19,9 +19,11 @@ void labyrinthe(Robot r,graphe g, pair<int,int> depart, pair<int,int> arrive){
 
 int main(){
 
+    //onh crée notre robot et note graphe
     Robot monRobot = Robot("NN");
     graphe monGraphe;
 
+    //tableau qui sert à populer notre graphe
     int monTab[7][8] = {
         {1, 1, 1, 1, 1, 1, 1, 1},
         {1, 0, 0, 0, 1, 1, 1, 1},
@@ -32,6 +34,7 @@ int main(){
         {1, 1, 1, 1, 1, 1, 1, 1}
     };
 
+    //on popule le graph
     monGraphe.creerConnexions(monTab);
     
 

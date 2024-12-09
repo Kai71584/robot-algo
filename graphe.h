@@ -19,6 +19,11 @@ struct pair_hash
         // Combine les deux hachages en un seul
         return h1 ^ h2; // Hachage combiné avec un décalage pour réduire les collisions
     }
+
+    template <class T1, class T2>
+    bool operator () (const std::pair<T1, T2>& lhs, const std::pair<T1, T2>& rhs) const {
+        return lhs == rhs; // Compare les paires pour égalité
+    }
 };
 
 struct voisins

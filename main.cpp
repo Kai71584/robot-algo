@@ -32,6 +32,7 @@ int main(){
         {1, 1, 1, 1, 1, 1, 1, 1}
     };
 
+    monGraphe.creerConnexions(monTab);
     
 
     monRobot.avancer();

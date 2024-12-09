@@ -1,6 +1,14 @@
 #include "graphe.h"
-#include <set>
+#include <iostream>
+#include <unordered_map>
 #include <unordered_set>
+#include <string>
+#include <stdexcept>
+#include <stack>
+#include <queue>
+#include <vector>
+#include <utility>
+#include <set>
 using namespace std;
 
 graphe::graphe()
@@ -103,7 +111,7 @@ vector<voisins> graphe::voisinde(pair<int, int> p1)
 void graphe::DFS(pair<int, int> p1)
 {
 
-    std::unordered_set<std::pair<int, int>> visite;
+    unordered_set<std::pair<int, int>> visite;
 
     stack<pair<int, int>> pile;
 

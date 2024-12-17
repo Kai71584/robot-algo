@@ -11,6 +11,7 @@ description: déclarations de la classe Robot
 #include <iostream>
 #include <utility>
 using namespace std;
+using Position = pair<int,int>;
 
 class Robot
 {
@@ -39,7 +40,7 @@ public:
     void roterD();
 
     // oriente le robot vers le prochain noeud
-    void mouvementOriente(pair<int,int>,pair<int,int>);
+    void mouvementOriente(Position,Position);
 };
 
 #endif

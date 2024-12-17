@@ -24,17 +24,17 @@ GrapheLabyrinthe::GrapheLabyrinthe()
 {
 }
 
-pair<int, int> Voisins::getPositionnement()
+Position Voisins::getPositionnement()
 {
     return this->positionnement;
 }
 
-void Voisins::setPositionnement(std::pair<int, int> position)
+void Voisins::setPositionnement(Position position)
 {
     this->positionnement = position;
 }
 
-std::string Voisins::getDirection()
+string Voisins::getDirection()
 {
     return this->direction;
 }
@@ -47,17 +47,17 @@ void Voisins::setDirection(string d)
 void GrapheLabyrinthe::ajouterSommet(int a, int b)
 {
 
-    std::pair<int, int> t = make_pair(a, b);
+    Position t = make_pair(a, b);
 
     if (positions.find(t) != positions.end())
     {
-        throw std::runtime_error("Le sommet existe déjà.");
+        throw runtime_error("Le sommet existe déjà.");
     }
 
     positions.insert(t);
 };
 
-void GrapheLabyrinthe::ajouterArrete(pair<int, int> p1, pair<int, int> p2, std::string a)
+void GrapheLabyrinthe::ajouterArrete(Position p1, Position p2, string a)
 {
 
     Voisins f;
@@ -69,7 +69,7 @@ void GrapheLabyrinthe::ajouterArrete(pair<int, int> p1, pair<int, int> p2, std::
 
 void GrapheLabyrinthe::creerConnexions(vector<vector<int>> tab)
 {
-    std::string a;
+    string a;
 
     size_t ligne = tab.size();      // nombre de lignes
     size_t colonne = tab[0].size(); // nombre de colonnes
@@ -94,13 +94,13 @@ void GrapheLabyrinthe::creerConnexions(vector<vector<int>> tab)
             if (tab[i][j] == 0) // si le sommet est 0
             {
 
-                pair<int, int> p1 = {i, j};
+                Position p1 = {i, j};
 
                 if (i + 1 < n && tab[i + 1][j] == 0)// si le voisin sud du sommet est 0
                 {
                     // sud
                     a = "SS";
-                    pair<int, int> p2 = {i + 1, j};
+                    Position p2 = {i + 1, j};
                     ajouterArrete(p1, p2, a);
                 }
 
@@ -108,7 +108,7 @@ void GrapheLabyrinthe::creerConnexions(vector<vector<int>> tab)
                 {
                     // nord
                     a = "NN";
-                    pair<int, int> p2 = {i - 1, j};
+                    Position p2 = {i - 1, j};
                     ajouterArrete(p1, p2, a);
                 }
 
@@ -116,7 +116,7 @@ void GrapheLabyrinthe::creerConnexions(vector<vector<int>> tab)
                 {
                     // est
                     a = "EE";
-                    pair<int, int> p2 = {i, j + 1};
+                    Position p2 = {i, j + 1};
                     ajouterArrete(p1, p2, a);
                 }
 
@@ -124,7 +124,7 @@ void GrapheLabyrinthe::creerConnexions(vector<vector<int>> tab)
                 {
                     // ouest
                     a = "OO";
-                    pair<int, int> p2 = {i, j - 1};
+                    Position p2 = {i, j - 1};
                     ajouterArrete(p1, p2, a);
                 }
             }
@@ -133,7 +133,7 @@ void GrapheLabyrinthe::creerConnexions(vector<vector<int>> tab)
 };
 
 //Récupère les voisins du sommet
-vector<Voisins> GrapheLabyrinthe::voisins_possibles(pair<int, int> p1)
+vector<Voisins> GrapheLabyrinthe::voisins_possibles(Position p1)
 {
 
     vector<Voisins> voisinss;
@@ -151,12 +151,12 @@ vector<Voisins> GrapheLabyrinthe::voisins_possibles(pair<int, int> p1)
 };
 
 //modèle initiale pour le labyrinthe
-void GrapheLabyrinthe::DFS(pair<int, int> p1)
+void GrapheLabyrinthe::DFS(Position p1)
 {
 
-    unordered_set<std::pair<int, int>, pair_hash> visite;
+    unordered_set<Position, pair_hash> visite;
 
-    stack<pair<int, int>> pile;
+    stack<Position> pile;
 
     visite.insert(p1); // ajoute p1 dans visite
     pile.push(p1);
@@ -164,7 +164,7 @@ void GrapheLabyrinthe::DFS(pair<int, int> p1)
     while (!pile.empty())
     {
 
-        pair<int, int> pcourant = pile.top();
+        Position pcourant = pile.top();
 
         pile.pop();
 

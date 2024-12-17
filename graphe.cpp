@@ -71,10 +71,12 @@ void graphe::creerConnexions(vector<vector<int>> tab)
     std::string a;
 
     
-    int n = tab.size(); // nombre de lignes
-    int g = tab[0].size();//nombre de colonnes
+    size_t ligne = tab.size(); // nombre de lignes
+    size_t colonne = tab[0].size();//nombre de colonnes
     
-    
+    int n=ligne;
+    int g=colonne;
+
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < g; j++)

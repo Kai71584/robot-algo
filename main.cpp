@@ -75,7 +75,8 @@ void labyrinthe(Robot r, graphe g, pair<int, int> depart, pair<int, int> arrive)
                 cout << tempCourant.first << "," << tempCourant.second << " " << endl;
 
                 r.mouvementOriente(tempCourant, chemin.top());
-
+                //r.mouvementOriente(make_pair(5,5), make_pair(5,4));
+                
                 if (chemin.top() != tempCourant)
                 {
                     // avancer

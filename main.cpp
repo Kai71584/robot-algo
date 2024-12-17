@@ -105,15 +105,15 @@ int main()
         {1, 0, 1, 1, 0, 1, 0, 1},
         {1, 0, 1, 0, 0, 0, 0, 1},
         {1, 0, 0, 1, 0, 1, 0, 1},
-        {1, 0, 0, 0, 0, 0, 1, 1},
+        {1, 1, 0, 0, 0, 0, 1, 1},
         {1, 1, 1, 1, 1, 1, 1, 1}};
 
     // on popule le graph
     monGraphe.creerConnexions(monTab);
 
     // on crée notre départ et notre entrée
-    pair<int, int> depart = {1, 1};
-    pair<int, int> fin = {4, 6};
+    pair<int, int> depart = {1, 3};
+    pair<int, int> fin = {3, 3};
 
     // parcours du labyrinthe
     labyrinthe(monRobot, monGraphe, depart, fin);

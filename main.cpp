@@ -13,7 +13,7 @@ description: parcours le labyrinthe avec un Robot
 
 using namespace std;
 
-void trouver_chemin(Robot r, GrapheLabyrinthe g, pair<int, int> depart, pair<int, int> arrive)
+void trouver_chemin(Robot r, GrapheLabyrinthe g, Position depart, Position arrive)
 {
     cout << "Notre robot pointe vers ";
     r.afficheDir();
@@ -21,15 +21,15 @@ void trouver_chemin(Robot r, GrapheLabyrinthe g, pair<int, int> depart, pair<int
 
     // on fait un DFS pour parcourir le GrapheLabyrinthe
 
-    unordered_set<std::pair<int, int>, pair_hash> visite; // collection des noeuds visités
+    unordered_set<Position, pair_hash> visite; // collection des noeuds visités
 
-    stack<pair<int, int>> pile;   // pile des voisins/noeuds à visiter
-    stack<pair<int, int>> chemin; // pile des voisins/noeuds sur le chemin
+    stack<Position> pile;   // pile des voisins/noeuds à visiter
+    stack<Position> chemin; // pile des voisins/noeuds sur le chemin
 
     visite.insert(depart); // ajoute depart dans visite
     pile.push(depart);     // on ajoute le départ comme noeud à visiter
     chemin.push(depart);
-    pair<int, int> pcourant = depart; // on commence à départ
+    Position pcourant = depart; // on commence à départ
 
     while (!pile.empty() && pcourant != arrive)
     {
@@ -69,7 +69,7 @@ void trouver_chemin(Robot r, GrapheLabyrinthe g, pair<int, int> depart, pair<int
             // si aucun voisin à faire
             if (aucunVoisinAFaire)
             {
-                pair<int, int> tempCourant = chemin.top();
+                Position tempCourant = chemin.top();
                 chemin.pop(); // recule
 
                 
@@ -115,8 +115,8 @@ int main()
     monGraphe.creerConnexions(monTab);
 
     // on crée notre départ et notre entrée
-    pair<int, int> depart = {2, 1};
-    pair<int, int> fin = {3, 3};
+    Position depart = {2, 1};
+    Position fin = {3, 3};
 
     // parcours du labyrinthe
     trouver_chemin(monRobot, monGraphe, depart, fin);

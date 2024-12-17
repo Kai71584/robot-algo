@@ -93,7 +93,7 @@ void Robot::afficheDir()
     cout << direction << endl;
 }
 
-void Robot::mouvementOriente(pair<int, int> pcourant, pair<int, int> psuivant)
+void Robot::mouvementOriente(Position pcourant, Position psuivant)
 {
     if (pcourant.first < psuivant.first && pcourant.second == psuivant.second) //suivant vers le sud
     {

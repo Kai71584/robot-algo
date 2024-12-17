@@ -16,6 +16,8 @@ description: déclarations de la classe GrapheLabyrinthe
 #include <utility>
 #include <set>
 using namespace std;
+using Position = pair<int,int>;
+
 struct pair_hash
 {
      template <typename T1, typename T2>
@@ -36,8 +38,7 @@ struct pair_hash
 class Voisins
 {
     private:
-    Position p;
-    //pair<int,int> positionnement;
+    Position positionnement;
     std::string direction;
     public:
     pair<int,int> getPositionnement();
@@ -46,22 +47,9 @@ class Voisins
     void setDirection(string);
     // Définition de l'opérateur < pour permettre la comparaison
     bool operator<(const Voisins& other) const {
-        return p.getposition() < other.p.getposition(); // Comparaison par position
+        return positionnement < other.positionnement; // Comparaison par position
     }
 
-    
-};
-
-class Position {
-
-    private:
-    pair<int,int> position;
-    public:
-    Position();
-    Position(pair<int,int>);
-    pair<int,int> getposition() const{
-        return this->position;
-    };
     
 };
 
@@ -74,16 +62,16 @@ public:
 
     void ajouterSommet(int, int);
 
-    void ajouterArrete(pair<int, int>, pair<int, int>, string);
+    void ajouterArrete(Position, Position, string);
 
     void creerConnexions(vector<vector<int>>);
 
-    std::vector<Voisins> voisins_possibles(pair<int, int>);
+    std::vector<Voisins> voisins_possibles(Position);
 
-    void DFS(Position position);
+    void DFS(Position);
 
 private:
-    set<pair<int, int>> positions;
+    set<Position> positions;
 
     std::unordered_map<Position, set<Voisins>, pair_hash> listeadjacence2;
 };

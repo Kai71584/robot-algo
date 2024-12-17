@@ -32,11 +32,16 @@ void labyrinthe(Robot r, graphe g, pair<int, int> depart, pair<int, int> arrive)
 
     while (!pile.empty() && pcourant != arrive)
     {
-
+        //Orientation
+        r.mouvementOriente(pcourant,pile.top());
+        
         pcourant = pile.top();
         chemin.push(pcourant);
         visite.insert(pcourant);
         pile.pop();
+
+        //avancer
+        r.avancer();
 
         //On affiche notre position actuelle
         cout << "Point: ";

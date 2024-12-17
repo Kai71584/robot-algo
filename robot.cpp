@@ -10,7 +10,6 @@ description: fonctions de la classe Robot
 #include <unordered_set>
 using namespace std;
 
-
 // constructeur
 Robot::Robot(string dirInit)
 {
@@ -92,4 +91,94 @@ void Robot::roterD()
 void Robot::afficheDir()
 {
     cout << direction;
+}
+
+void Robot::mouvementOriente(pair<int, int> pcourant, pair<int, int> psuivant)
+{
+
+    if (pcourant.first < psuivant.first && pcourant.second == psuivant.second) //suivant vers le sud
+    {
+        if (direction == "NN")
+        {
+            roterD();
+            roterD();
+        }
+        else if (direction == "OO")
+        {
+            roterG();
+        }
+        else if (direction == "SS") 
+        {
+            //déja vers le sud
+        }
+        else if (direction == "EE")
+        {
+            roterD();
+        }
+    }
+
+    if (pcourant.first > psuivant.first && pcourant.second == psuivant.second) //suivant vers le nord
+    {
+        if (direction == "NN")
+        {
+            //déja vers le nord
+        }
+        else if (direction == "OO")
+        {
+            roterD();
+        }
+        else if (direction == "SS") 
+        {
+            roterD();
+            roterD();
+        }
+        else if (direction == "EE")
+        {
+            roterG();
+        }
+    }
+
+    if (pcourant.first == psuivant.first && pcourant.second < psuivant.second) //suivant vers l'est
+    {
+        if (direction == "NN")
+        {
+            roterD();
+            
+        }
+        else if (direction == "OO")
+        {
+            roterG();
+            roterG();
+        }
+        else if (direction == "SS") 
+        {
+            roterG();
+        }
+        else if (direction == "EE")
+        {
+            //déja a l'est
+        }
+    }
+
+    if (pcourant.first < psuivant.first && pcourant.second > psuivant.second) //suivant vers l'ouest
+    {
+        if (direction == "NN")
+        {
+            roterG();
+            
+        }
+        else if (direction == "OO")
+        {
+            //Déjà à l'ouest
+        }
+        else if (direction == "SS") 
+        {
+            roterD();
+        }
+        else if (direction == "EE")
+        {
+            roterD();
+            roterD();
+        }
+    }
 }

@@ -32,11 +32,13 @@ void labyrinthe(Robot r, graphe g, pair<int, int> depart, pair<int, int> arrive)
 
     while (!pile.empty() && pcourant != arrive)
     {
+        
 
         pcourant = pile.top();
         chemin.push(pcourant);
         visite.insert(pcourant);
         pile.pop();
+        
 
         //On affiche notre position actuelle
         cout << "Point: ";
@@ -78,7 +80,7 @@ int main()
     cout << "Ceci est notre main" << endl;
 
     // onh crée notre robot et note graphe
-    Robot monRobot = Robot("SS");
+    Robot monRobot = Robot();
     graphe monGraphe;
 
     // tableau qui sert à populer notre graphe

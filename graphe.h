@@ -4,7 +4,8 @@ autheur: William Roy
 dernière MAJ: 2024-12-17 17:40 William et P-A
 description: déclarations de la classe GrapheLabyrinthe
 */
-
+#ifndef __GRAPHE_H__
+#define __GRAPHE_H__
 #include <iostream>
 #include <unordered_map>
 #include <unordered_set>
@@ -41,6 +42,7 @@ class Voisins
     Position positionnement;
     std::string direction;
     public:
+    
     pair<int,int> getPositionnement();
     void setPositionnement(pair<int,int>);
     string getDirection();
@@ -55,9 +57,9 @@ class Voisins
 
 struct Labyrinthe
 {
-    private:
     
-    public:
+    
+  
     Labyrinthe();
     vector<vector<int>> generer_labyrinthe(){
 
@@ -88,7 +90,7 @@ public:
 
     void ajouterArrete(Position, Position, string);
 
-    GrapheLabyrinthe labyrinthe_to_graphe(vector<vector<int>>);
+    //GrapheLabyrinthe labyrinthe_to_graphe(vector<vector<int>>);
 
     std::vector<Voisins> voisins_possibles(Position);
 
@@ -100,3 +102,4 @@ private:
     std::unordered_map<Position, set<Voisins>, pair_hash> listeArretes;
 };
 
+#endif

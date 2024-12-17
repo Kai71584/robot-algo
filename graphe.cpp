@@ -71,7 +71,7 @@ void GrapheLabyrinthe::ajouterArrete(Position p1, Position p2, string a)
     listeArretes[p1].insert(f);
 };
 
-GrapheLabyrinthe GrapheLabyrinthe::labyrinthe_to_graphe(vector<vector<int>> tab)
+/*GrapheLabyrinthe GrapheLabyrinthe::labyrinthe_to_graphe(vector<vector<int>> tab)
 {
     string a;
     GrapheLabyrinthe graphe;
@@ -136,7 +136,7 @@ GrapheLabyrinthe GrapheLabyrinthe::labyrinthe_to_graphe(vector<vector<int>> tab)
     }
 
     return graphe;
-};
+};*/
 
 //Récupère les voisins du sommet
 vector<Voisins> GrapheLabyrinthe::voisins_possibles(Position p1)

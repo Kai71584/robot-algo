@@ -1,35 +1,74 @@
-/*
-fichier: main.cpp
-autheur: Pierre-Antoine Lajoie
-dernière MAJ: 2024-12-09 17:40 William et P-A
-description: parcours le labyrinthe avec un Robot
-*/
-
-#include <iostream>
-#include <unordered_map>
-#include <unordered_set>
-#include "graphe.h"
-#include "robot.h"
-
-using namespace std;
-
-vector<vector<int>> generer_labyrinthe(){
-
-    vector<vector<int>> monTab = {
-        {1, 1, 1, 1, 1, 1, 1, 1},
-        {1, 0, 0, 0, 1, 1, 1, 1},
-        {1, 0, 1, 1, 0, 1, 0, 1},
-        {1, 0, 1, 0, 0, 0, 0, 1},
-        {1, 0, 0, 1, 0, 1, 0, 1},
-        {1, 0, 0, 0, 0, 0, 1, 1},
-        {1, 1, 1, 1, 1, 1, 1, 1}};
+#include "explorateur.h"
 
 
+GrapheLabyrinthe Explorateur::labyrinthe_to_graphe(vector<vector<int>> tab)
+{
+    string a;
+    GrapheLabyrinthe graphe;
+    size_t ligne = tab.size();      // nombre de lignes
+    size_t colonne = tab[0].size(); // nombre de colonnes
 
-    return monTab;
-}
+    int n = static_cast<int>(ligne);
+    int g = static_cast<int>(colonne);
 
-/*void trouver_chemin(Robot r, GrapheLabyrinthe g, Position depart, Position arrive)
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < g; j++)
+        {
+
+            graphe.ajouterSommet(i, j);
+        }
+    }
+
+    for (int i = 0; i < n; i++) // double boucle for pour parcourir le tableau
+    {
+        for (int j = 0; j < g; j++)
+        {
+
+            if (tab[i][j] == 0) // si le sommet est 0
+            {
+
+                Position p1 = {i, j};
+
+                if (i + 1 < n && tab[i + 1][j] == 0)// si le voisin sud du sommet est 0
+                {
+                    // sud
+                    a = "SS";
+                    Position p2 = {i + 1, j};
+                    graphe.ajouterArrete(p1, p2, a);
+                }
+
+                if (i - 1 >= 0 && tab[i - 1][j] == 0)// si le voisin nord du sommet est 0
+                {
+                    // nord
+                    a = "NN";
+                    Position p2 = {i - 1, j};
+                    graphe.ajouterArrete(p1, p2, a);
+                }
+
+                if (j + 1 < n && tab[i][j + 1] == 0)// si le voisin est du sommet est 0
+                {
+                    // est
+                    a = "EE";
+                    Position p2 = {i, j + 1};
+                    graphe.ajouterArrete(p1, p2, a);
+                }
+
+                if (j - 1 >= 0 && tab[i][j - 1] == 0)// si le voisin ouest du sommet est 0
+                {
+                    // ouest
+                    a = "OO";
+                    Position p2 = {i, j - 1};
+                    graphe.ajouterArrete(p1, p2, a);
+                }
+            }
+        }
+    }
+
+    return graphe;
+};
+
+void Explorateur::trouver_chemin(Robot r, GrapheLabyrinthe g, Position depart, Position arrive)
 {
     cout << "Notre robot pointe vers ";
     r.afficheDir();
@@ -104,29 +143,4 @@ vector<vector<int>> generer_labyrinthe(){
             }
         }
     }
-}*/
-
-int main()
-{
-
-    cout << "Ceci est notre main" << endl;
-
-    // on crée notre robot et note GrapheLabyrinthe
-    Robot monRobot = Robot();
-    GrapheLabyrinthe monGraphe;
-    Labyrinthe labyrinthe;
-
-
-    vector<vector<int>>tableau = labyrinthe.generer_labyrinthe();
-    // on popule le GrapheLabyrinthe
-    //monGraphe = monGraphe.labyrinthe_to_graphe(tableau);
-
-    // on crée notre départ et notre entrée
-    Position depart = {2, 1};
-    Position fin = {3, 3};
-
-    // parcours du labyrinthe
-    //trouver_chemin(monRobot, monGraphe, depart, fin);
-
-    return 0;
 }

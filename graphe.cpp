@@ -20,8 +20,12 @@ description: fonctions de la classe GrapheLabyrinthe
 
 using namespace std;
 
-GrapheLabyrinthe::GrapheLabyrinthe()
+GrapheLabyrinthe::GrapheLabyrinthe():pos(),listeadjacence2(0){};
+
+
+GrapheLabyrinthe::GrapheLabyrinthe(unordered_map <Position, set<Voisins>, pair_hash> a)
 {
+    this->listeadjacence2=a;
 }
 
 Labyrinthe::Labyrinthe(){
@@ -48,31 +52,36 @@ void Voisins::setDirection(string d)
     this->direction = d;
 }
 
-void GrapheLabyrinthe::ajouterSommet(int a, int b)
+void GrapheLabyrinthe::ajouterSommet(GrapheLabyrinthe g, int a, int b)
 {
 
     Position t = make_pair(a, b);
 
-    if (positions.find(t) != positions.end())
+    if (pos.find(t) != pos.end())
     {
         throw runtime_error("Le sommet existe déjà.");
     }
 
-    positions.insert(t);
+    g.pos.insert(t);
 };
 
-void GrapheLabyrinthe::ajouterArrete(Position p1, Position p2, string a)
+void GrapheLabyrinthe::ajouterArrete(GrapheLabyrinthe g,Position p1, Position p2, string a)
 {
 
     Voisins f;
     f.setPositionnement(p2);
     f.setDirection(a);
 
-    listeadjacence2[p1].insert(f);
+    g.listeadjacence2[p1].insert(f);
 };
 
-void GrapheLabyrinthe::creerConnexions(vector<vector<int>> tab)
+GrapheLabyrinthe GrapheLabyrinthe::creerConnexions(vector<vector<int>> tab)
 {
+
+    GrapheLabyrinthe grapho;
+
+    //grapho().listeadjacence2;
+
     string a;
 
     size_t ligne = tab.size();      // nombre de lignes
@@ -86,7 +95,7 @@ void GrapheLabyrinthe::creerConnexions(vector<vector<int>> tab)
         for (int j = 0; j < g; j++)
         {
 
-            ajouterSommet(i, j);
+            ajouterSommet(grapho,i, j);
         }
     }
 
@@ -95,59 +104,66 @@ void GrapheLabyrinthe::creerConnexions(vector<vector<int>> tab)
         for (int j = 0; j < g; j++)
         {
 
-            if (tab[i][j] == 0) // si le sommet est 0
+            if (tab[i][j] == 0) // si le sommet est 1
             {
 
                 Position p1 = {i, j};
 
-                if (i + 1 < n && tab[i + 1][j] == 0)// si le voisin sud du sommet est 0
+                if (i + 1 < n && tab[i + 1][j] == 0)// si le voisin sud du sommet est 1
                 {
                     // sud
                     a = "SS";
                     Position p2 = {i + 1, j};
-                    ajouterArrete(p1, p2, a);
+                    ajouterArrete(grapho,p1, p2, a);
                 }
 
-                if (i - 1 >= 0 && tab[i - 1][j] == 0)// si le voisin nord du sommet est 0
+                if (i - 1 >= 0 && tab[i - 1][j] == 0)// si le voisin nord du sommet est 1
                 {
                     // nord
                     a = "NN";
                     Position p2 = {i - 1, j};
-                    ajouterArrete(p1, p2, a);
+                    ajouterArrete(grapho,p1, p2, a);
                 }
 
-                if (j + 1 < n && tab[i][j + 1] == 0)// si le voisin est du sommet est 0
+                if (j + 1 < n && tab[i][j + 1] == 0)// si le voisin est du sommet est 1
                 {
                     // est
                     a = "EE";
                     Position p2 = {i, j + 1};
-                    ajouterArrete(p1, p2, a);
+                    ajouterArrete(grapho,p1, p2, a);
                 }
 
-                if (j - 1 >= 0 && tab[i][j - 1] == 0)// si le voisin ouest du sommet est 0
+                if (j - 1 >= 0 && tab[i][j - 1] == 0)// si le voisin ouest du sommet est 1
                 {
                     // ouest
                     a = "OO";
                     Position p2 = {i, j - 1};
-                    ajouterArrete(p1, p2, a);
+                    ajouterArrete(grapho,p1, p2, a);
                 }
             }
         }
     }
+
+    return grapho;
+
 };
 
 //Récupère les voisins du sommet
-vector<Voisins> GrapheLabyrinthe::voisins_possibles(Position p1)
+vector<Voisins> GrapheLabyrinthe::voisins_possibles(GrapheLabyrinthe g,Position p1)
 {
 
     vector<Voisins> voisinss;
 
-    if (listeadjacence2.find(p1) != listeadjacence2.end())
+    if (g.listeadjacence2.find(p1) != g.listeadjacence2.end())
     {
 
-        for (auto voisin : listeadjacence2[p1])
+        for (auto voisin : g.listeadjacence2[p1])
         {
+            
             voisinss.push_back(voisin);
+
+            cout << voisin.getPositionnement().first << endl; 
+            cout << voisin.getPositionnement().second << endl; 
         }
     }
 
@@ -155,7 +171,7 @@ vector<Voisins> GrapheLabyrinthe::voisins_possibles(Position p1)
 };
 
 //modèle initiale pour le labyrinthe
-void GrapheLabyrinthe::DFS(Position p1)
+void GrapheLabyrinthe::DFS(GrapheLabyrinthe g, Position p1)
 {
 
     unordered_set<Position, pair_hash> visite;
@@ -174,7 +190,7 @@ void GrapheLabyrinthe::DFS(Position p1)
 
         cout << pcourant.first << "," << pcourant.second << " " << endl;
 
-        for (Voisins &voisinsommet : voisins_possibles(pcourant)) // récupère les voisins du sommetcourant
+        for (Voisins &voisinsommet : voisins_possibles(g,pcourant)) // récupère les voisins du sommetcourant
         {
             if (visite.find(voisinsommet.getPositionnement()) == visite.end()) // vérifie qu'on n'a pas encore visité les voisins de sommetcourant
             {

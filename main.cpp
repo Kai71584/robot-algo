@@ -13,7 +13,7 @@ description: parcours le labyrinthe avec un Robot
 
 using namespace std;
 
-vector<vector<int>> generer_labyrinthe(){
+/*vector<vector<int>> generer_labyrinthe(){
 
     vector<vector<int>> monTab = {
         {1, 1, 1, 1, 1, 1, 1, 1},
@@ -27,7 +27,7 @@ vector<vector<int>> generer_labyrinthe(){
 
 
     return monTab;
-}
+}*/
 
 void trouver_chemin(Robot r, GrapheLabyrinthe g, Position depart, Position arrive)
 {
@@ -72,7 +72,7 @@ void trouver_chemin(Robot r, GrapheLabyrinthe g, Position depart, Position arriv
         // tant qu'il y as des voisins a faire et que on est pas arrivé à la fin
         while (aucunVoisinAFaire && pcourant != arrive)
         {
-            for (Voisins &voisinsommet : g.voisins_possibles(chemin.top())) // récupère les voisins du sommetcourant
+            for (Voisins &voisinsommet : g.voisins_possibles(g,chemin.top())) // récupère les voisins du sommetcourant
             {
 
                 if (visite.find(voisinsommet.getPositionnement()) == visite.end()) // vérifie qu'on n'a pas encore visité les voisins de sommetcourant
@@ -114,16 +114,16 @@ int main()
     // on crée notre robot et note GrapheLabyrinthe
     Robot monRobot = Robot();
     GrapheLabyrinthe monGraphe;
-    Labyrinthe labyrinthe();
+    Labyrinthe labyrinthe;
 
 
-    vector<vector<int>>tableau = labyrinthe().generer_labyrinthe();
+    vector<vector<int>>tableau = labyrinthe.generer_labyrinthe();
     // on popule le GrapheLabyrinthe
     monGraphe.creerConnexions(tableau);
 
     // on crée notre départ et notre entrée
-    Position depart = {2, 1};
-    Position fin = {3, 3};
+    Position depart = {1, 1};
+    Position fin = {1, 4};
 
     // parcours du labyrinthe
     trouver_chemin(monRobot, monGraphe, depart, fin);

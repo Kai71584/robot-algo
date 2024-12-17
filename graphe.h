@@ -56,8 +56,9 @@ class Voisins
 struct Labyrinthe
 {
     private:
-    Labyrinthe();
+    
     public:
+    Labyrinthe();
     vector<vector<int>> generer_labyrinthe(){
 
     vector<vector<int>> monTab = {
@@ -83,18 +84,20 @@ class GrapheLabyrinthe
 public:
     GrapheLabyrinthe();
 
-    void ajouterSommet(int, int);
+    GrapheLabyrinthe(unordered_map <Position, set<Voisins>, pair_hash>);
 
-    void ajouterArrete(Position, Position, string);
+    void ajouterSommet(GrapheLabyrinthe,int, int);
 
-    void creerConnexions(vector<vector<int>>);
+    void ajouterArrete(GrapheLabyrinthe,Position, Position, string);
 
-    std::vector<Voisins> voisins_possibles(Position);
+    GrapheLabyrinthe creerConnexions(vector<vector<int>>);
 
-    void DFS(Position);
+    std::vector<Voisins> voisins_possibles(GrapheLabyrinthe,Position);
+
+    void DFS(GrapheLabyrinthe, Position);
 
 private:
-    set<Position> positions;
+    set<Position> pos;
 
     std::unordered_map<Position, set<Voisins>, pair_hash> listeadjacence2;
 };

@@ -36,7 +36,7 @@ pair<int, int> Voisins::getPositionnement()
 
 void Voisins::setPositionnement(std::pair<int, int> pos)
 {
-    this->p.position = pos;
+    this->p.getposition() = pos;
 }
 
 std::string Voisins::getDirection()

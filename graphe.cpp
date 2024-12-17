@@ -24,6 +24,10 @@ GrapheLabyrinthe::GrapheLabyrinthe()
 {
 }
 
+Labyrinthe::Labyrinthe(){
+
+}
+
 Position Voisins::getPositionnement()
 {
     return this->positionnement;

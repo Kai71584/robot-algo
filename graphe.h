@@ -53,6 +53,29 @@ class Voisins
     
 };
 
+struct Labyrinthe
+{
+    private:
+    Labyrinthe();
+    public:
+    vector<vector<int>> generer_labyrinthe(){
+
+    vector<vector<int>> monTab = {
+        {1, 1, 1, 1, 1, 1, 1, 1},
+        {1, 0, 0, 0, 1, 1, 1, 1},
+        {1, 0, 1, 1, 0, 1, 0, 1},
+        {1, 0, 1, 0, 0, 0, 0, 1},
+        {1, 0, 0, 1, 0, 1, 0, 1},
+        {1, 0, 0, 0, 0, 0, 1, 1},
+        {1, 1, 1, 1, 1, 1, 1, 1}};
+
+
+
+    return monTab;
+}
+
+};
+
 
 class GrapheLabyrinthe
 {

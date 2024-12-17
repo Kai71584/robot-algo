@@ -1,7 +1,7 @@
 /*
 fichier: robot.cpp
 autheur: William Roy
-dernière MAJ: 2024-12-09 15:00 William
+dernière MAJ: 2024-12-17 13:40 William
 description: fonctions de la classe graphe
 */
 
@@ -24,22 +24,24 @@ graphe::graphe()
 {
 }
 
-
-
-pair<int,int> Voisins::getPositionnement(){
+pair<int, int> Voisins::getPositionnement()
+{
     return this->positionnement;
 }
 
-void Voisins::setPositionnement(std::pair<int,int> position){
+void Voisins::setPositionnement(std::pair<int, int> position)
+{
     this->positionnement = position;
 }
 
-std::string Voisins::getDirection(){
+std::string Voisins::getDirection()
+{
     return this->direction;
 }
 
-void Voisins::setDirection(string d){
-    this-> direction = d;
+void Voisins::setDirection(string d)
+{
+    this->direction = d;
 }
 
 void graphe::ajouterSommet(int a, int b)
@@ -70,24 +72,20 @@ void graphe::creerConnexions(vector<vector<int>> tab)
 {
     std::string a;
 
-    
-    size_t ligne = tab.size(); // nombre de lignes
-    size_t colonne = tab[0].size();//nombre de colonnes
-    
-    int n=static_cast<int>(ligne);
-    int g=static_cast<int>(colonne);
+    size_t ligne = tab.size();      // nombre de lignes
+    size_t colonne = tab[0].size(); // nombre de colonnes
+
+    int n = static_cast<int>(ligne);
+    int g = static_cast<int>(colonne);
 
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < g; j++)
         {
 
-            ajouterSommet(i,j);
-
-        
+            ajouterSommet(i, j);
         }
-        
-        }
+    }
 
     for (int i = 0; i < n; i++)
     {
@@ -107,7 +105,7 @@ void graphe::creerConnexions(vector<vector<int>> tab)
                     ajouterArrete(p1, p2, a);
                 }
 
-                if (i-1>=0 && tab[i - 1][j] == 0)
+                if (i - 1 >= 0 && tab[i - 1][j] == 0)
                 {
                     // nord
                     a = "NN";
@@ -115,7 +113,7 @@ void graphe::creerConnexions(vector<vector<int>> tab)
                     ajouterArrete(p1, p2, a);
                 }
 
-                if (j + 1 < n &&tab[i][j + 1] == 0)
+                if (j + 1 < n && tab[i][j + 1] == 0)
                 {
                     // est
                     a = "EE";
@@ -123,7 +121,7 @@ void graphe::creerConnexions(vector<vector<int>> tab)
                     ajouterArrete(p1, p2, a);
                 }
 
-                if (j-1>=0 && tab[i][j - 1] == 0)
+                if (j - 1 >= 0 && tab[i][j - 1] == 0)
                 {
                     // ouest
                     a = "OO";
@@ -155,7 +153,7 @@ vector<Voisins> graphe::voisinde(pair<int, int> p1)
 void graphe::DFS(pair<int, int> p1)
 {
 
-    unordered_set<std::pair<int, int>,pair_hash> visite;
+    unordered_set<std::pair<int, int>, pair_hash> visite;
 
     stack<pair<int, int>> pile;
 
@@ -169,39 +167,7 @@ void graphe::DFS(pair<int, int> p1)
 
         pile.pop();
 
-        cout << pcourant.first << "," << pcourant.second << " " <<endl;
-
-        /*vector<Voisins> bb = voisinde(pcourant);
-        unordered_set<pair<int, int>, pair_hash> abc;
-
-        for (Voisins aa : bb)
-        {
-            abc.insert(aa.getPositionnement());
-        }
-
-        for (pair<int, int> elem : abc)
-        {
-            if (visite.find(elem) == visite.end())
-            {
-                // si élément n'est pas trouvé dans visite
-            }
-        }
-
-        if (visite == abc)
-        { // regarde s'il tous les voisins de ce coin la sont fait
-            stack<pair<int, int>> p2;
-            for (pair<int, int> d : visite)
-            {
-                p2.push(d);
-            }
-
-            pcourant = p2.top();
-            p2.pop();
-
-            // recommencer tant que visite == abc
-            // cela veut dire recommence tant que tous les visites du voisinage ne sont pas faite
-            // pas terminer manque une boucle
-        }*/
+        cout << pcourant.first << "," << pcourant.second << " " << endl;
 
         for (Voisins &voisinsommet : voisinde(pcourant)) // récupère les voisins du sommetcourant
         {

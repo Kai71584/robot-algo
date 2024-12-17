@@ -1,7 +1,7 @@
 /*
 fichier: robot.h
 autheur: Pierre-Antoine Lajoie
-dernière MAJ: 2024-12-06 14:30
+dernière MAJ: 2024-12-17 13:00
 description: déclarations de la classe Robot
 */
 

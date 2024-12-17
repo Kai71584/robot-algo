@@ -1,7 +1,7 @@
 /*
 fichier: main.cpp
 autheur: Pierre-Antoine Lajoie
-dernière MAJ: 2024-12-09 15:00 P-A et William
+dernière MAJ: 2024-12-09 13:40 P-A et William
 description: parcours le labyrinthe avec un Robot
 */
 
@@ -115,8 +115,8 @@ int main()
     monGraphe.creerConnexions(monTab);
 
     // on crée notre départ et notre entrée
-    pair<int, int> depart = {1, 1};
-    pair<int, int> fin = {4, 6};
+    pair<int, int> depart = {2, 1};
+    pair<int, int> fin = {3, 3};
 
     // parcours du labyrinthe
     labyrinthe(monRobot, monGraphe, depart, fin);

@@ -72,9 +72,12 @@ void trouver_chemin(Robot r, GrapheLabyrinthe g, Position depart, Position arriv
         // tant qu'il y as des voisins a faire et que on est pas arrivé à la fin
         while (aucunVoisinAFaire && pcourant != arrive)
         {
+            cout << "a"<< endl;
+
             for (Voisins &voisinsommet : g.voisins_possibles(g,chemin.top())) // récupère les voisins du sommetcourant
             {
-
+                     cout << voisinsommet.getPositionnement().first << endl; 
+            cout << voisinsommet.getPositionnement().second << endl; 
                 if (visite.find(voisinsommet.getPositionnement()) == visite.end()) // vérifie qu'on n'a pas encore visité les voisins de sommetcourant
                 {
                     pile.push(voisinsommet.getPositionnement()); // ajoute voisinsommet dans la pile

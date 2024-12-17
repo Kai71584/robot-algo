@@ -1,7 +1,7 @@
 /*
 fichier: robot.cpp
 autheur: Pierre-Antoine Lajoie
-dernière MAJ: 2024-12-17 13:40 P-A
+dernière MAJ: 2024-12-17 16:40 P-A
 description: fonctions de la classe Robot
 */
 

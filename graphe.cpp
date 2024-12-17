@@ -1,7 +1,7 @@
 /*
 fichier: robot.cpp
 autheur: William Roy
-dernière MAJ: 2024-12-17 13:40 William
+dernière MAJ: 2024-12-17 17:40 William et P-A
 description: fonctions de la classe GrapheLabyrinthe
 */
 
@@ -68,7 +68,7 @@ void GrapheLabyrinthe::ajouterArrete(Position p1, Position p2, string a)
     f.setPositionnement(p2);
     f.setDirection(a);
 
-    listeadjacence2[p1].insert(f);
+    listeArretes[p1].insert(f);
 };
 
 void GrapheLabyrinthe::creerConnexions(vector<vector<int>> tab)
@@ -140,18 +140,18 @@ void GrapheLabyrinthe::creerConnexions(vector<vector<int>> tab)
 vector<Voisins> GrapheLabyrinthe::voisins_possibles(Position p1)
 {
 
-    vector<Voisins> voisinss;
+    vector<Voisins> vectVoisins;
 
-    if (listeadjacence2.find(p1) != listeadjacence2.end())
+    if (listeArretes.find(p1) != listeArretes.end())
     {
 
-        for (auto voisin : listeadjacence2[p1])
+        for (auto voisin : listeArretes[p1])
         {
-            voisinss.push_back(voisin);
+            vectVoisins.push_back(voisin);
         }
     }
 
-    return voisinss;// retourne les voisins du sommet
+    return vectVoisins;// retourne les voisins du sommet
 };
 
 //modèle initiale pour le labyrinthe

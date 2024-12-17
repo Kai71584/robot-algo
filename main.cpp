@@ -1,7 +1,7 @@
 /*
 fichier: main.cpp
 autheur: Pierre-Antoine Lajoie
-dernière MAJ: 2024-12-09 13:40 P-A et William
+dernière MAJ: 2024-12-09 17:40 William et P-A
 description: parcours le labyrinthe avec un Robot
 */
 

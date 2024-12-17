@@ -1,7 +1,7 @@
 /*
 fichier: robot.cpp
 autheur: William Roy
-dernière MAJ: 2024-12-17 15:00 William
+dernière MAJ: 2024-12-17 17:40 William et P-A
 description: déclarations de la classe GrapheLabyrinthe
 */
 
@@ -97,6 +97,6 @@ public:
 private:
     set<Position> positions;
 
-    std::unordered_map<Position, set<Voisins>, pair_hash> listeadjacence2;
+    std::unordered_map<Position, set<Voisins>, pair_hash> listeArretes;
 };
 

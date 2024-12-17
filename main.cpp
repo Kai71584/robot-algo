@@ -34,14 +34,18 @@ void labyrinthe(Robot r, graphe g, pair<int, int> depart, pair<int, int> arrive)
     {
 
         pcourant = pile.top();
+        chemin.push(pcourant);
         pile.pop();
 
-        cout << pcourant.first << "," << pcourant.second << " " << endl;
-        
-        
 
+        cout << "Point: ";
+        cout << chemin.top().first << "," << chemin.top().second << " " << endl;
+        
+        
+        cout << "Voisins: "<<endl;
         for (Voisins &voisinsommet : g.voisinde(pcourant)) // récupère les voisins du sommetcourant
         {
+            cout << voisinsommet.getPositionnement().first << "," << voisinsommet.getPositionnement().second << " " << endl;
             if (visite.find(voisinsommet.getPositionnement()) == visite.end()) // vérifie qu'on n'a pas encore visité les voisins de sommetcourant
             {
                 pile.push(voisinsommet.getPositionnement());     // ajoute voisinsommet dans la pile
@@ -49,6 +53,9 @@ void labyrinthe(Robot r, graphe g, pair<int, int> depart, pair<int, int> arrive)
             }
         }
     }
+
+    
+    
 }
 
 int main()

@@ -71,9 +71,7 @@ void labyrinthe(Robot r, graphe g, pair<int, int> depart, pair<int, int> arrive)
                 pair<int, int> tempCourant = chemin.top();
                 chemin.pop(); // recule
 
-                cout << "Point temp: ";
-                cout << tempCourant.first << "," << tempCourant.second << " " << endl;
-
+                
                 r.mouvementOriente(tempCourant, chemin.top());
                 //r.mouvementOriente(make_pair(5,5), make_pair(5,4));
                 
@@ -82,9 +80,9 @@ void labyrinthe(Robot r, graphe g, pair<int, int> depart, pair<int, int> arrive)
                     // avancer
                     r.avancer();
                 }
-
+                pcourant = chemin.top();
                 // affiche la nouvelle position
-                cout << "Point après ajustement: ";
+                cout << "Point: ";
                 cout << chemin.top().first << "," << chemin.top().second << " " << endl;
             }
         }

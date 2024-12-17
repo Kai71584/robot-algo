@@ -90,12 +90,11 @@ void Robot::roterD()
 // affiche la direction dans laquelle le robot
 void Robot::afficheDir()
 {
-    cout << direction;
+    cout << direction << endl;
 }
 
 void Robot::mouvementOriente(pair<int, int> pcourant, pair<int, int> psuivant)
 {
-
     if (pcourant.first < psuivant.first && pcourant.second == psuivant.second) //suivant vers le sud
     {
         if (direction == "NN")
@@ -119,6 +118,7 @@ void Robot::mouvementOriente(pair<int, int> pcourant, pair<int, int> psuivant)
 
     if (pcourant.first > psuivant.first && pcourant.second == psuivant.second) //suivant vers le nord
     {
+        
         if (direction == "NN")
         {
             //déja vers le nord
@@ -160,7 +160,7 @@ void Robot::mouvementOriente(pair<int, int> pcourant, pair<int, int> psuivant)
         }
     }
 
-    if (pcourant.first < psuivant.first && pcourant.second > psuivant.second) //suivant vers l'ouest
+    if (pcourant.first == psuivant.first && pcourant.second > psuivant.second) //suivant vers l'ouest
     {
         if (direction == "NN")
         {
@@ -169,7 +169,7 @@ void Robot::mouvementOriente(pair<int, int> pcourant, pair<int, int> psuivant)
         }
         else if (direction == "OO")
         {
-            //Déjà à l'ouest
+            //déjà vers l'ouest
         }
         else if (direction == "SS") 
         {
@@ -181,4 +181,6 @@ void Robot::mouvementOriente(pair<int, int> pcourant, pair<int, int> psuivant)
             roterD();
         }
     }
+    cout << "je point maintenant vers ";
+    afficheDir();
 }

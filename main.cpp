@@ -13,6 +13,22 @@ description: parcours le labyrinthe avec un Robot
 
 using namespace std;
 
+vector<vector<int>> generer_labyrinthe(){
+
+    vector<vector<int>> monTab = {
+        {1, 1, 1, 1, 1, 1, 1, 1},
+        {1, 0, 0, 0, 1, 1, 1, 1},
+        {1, 0, 1, 1, 0, 1, 0, 1},
+        {1, 0, 1, 0, 0, 0, 0, 1},
+        {1, 0, 0, 1, 0, 1, 0, 1},
+        {1, 0, 0, 0, 0, 0, 1, 1},
+        {1, 1, 1, 1, 1, 1, 1, 1}};
+
+
+
+    return monTab;
+}
+
 void trouver_chemin(Robot r, GrapheLabyrinthe g, Position depart, Position arrive)
 {
     cout << "Notre robot pointe vers ";
@@ -99,20 +115,11 @@ int main()
     Robot monRobot = Robot();
     GrapheLabyrinthe monGraphe;
 
-    // tableau qui sert à populer notre GrapheLabyrinthe
-    vector<vector<int>> monTab = {
-        {1, 1, 1, 1, 1, 1, 1, 1},
-        {1, 0, 0, 0, 1, 1, 1, 1},
-        {1, 0, 1, 1, 0, 1, 0, 1},
-        {1, 0, 1, 0, 0, 0, 0, 1},
-        {1, 0, 0, 1, 0, 1, 0, 1},
-        {1, 0, 0, 0, 0, 0, 1, 1},
-        {1, 1, 1, 1, 1, 1, 1, 1}};
 
 
-
+    vector<vector<int>>tableau = generer_labyrinthe();
     // on popule le GrapheLabyrinthe
-    monGraphe.creerConnexions(monTab);
+    monGraphe.creerConnexions(tableau);
 
     // on crée notre départ et notre entrée
     Position depart = {2, 1};

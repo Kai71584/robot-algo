@@ -119,7 +119,7 @@ int main()
 
     vector<vector<int>>tableau = labyrinthe.generer_labyrinthe();
     // on popule le GrapheLabyrinthe
-    monGraphe.creerConnexions(tableau);
+    monGraphe = monGraphe.labyrinthe_to_graphe(tableau);
 
     // on crée notre départ et notre entrée
     Position depart = {2, 1};

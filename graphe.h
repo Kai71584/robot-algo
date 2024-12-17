@@ -88,7 +88,7 @@ public:
 
     void ajouterArrete(Position, Position, string);
 
-    void creerConnexions(vector<vector<int>>);
+    GrapheLabyrinthe labyrinthe_to_graphe(vector<vector<int>>);
 
     std::vector<Voisins> voisins_possibles(Position);
 

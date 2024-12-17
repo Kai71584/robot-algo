@@ -71,10 +71,10 @@ void GrapheLabyrinthe::ajouterArrete(Position p1, Position p2, string a)
     listeArretes[p1].insert(f);
 };
 
-void GrapheLabyrinthe::creerConnexions(vector<vector<int>> tab)
+GrapheLabyrinthe GrapheLabyrinthe::labyrinthe_to_graphe(vector<vector<int>> tab)
 {
     string a;
-
+    GrapheLabyrinthe graphe;
     size_t ligne = tab.size();      // nombre de lignes
     size_t colonne = tab[0].size(); // nombre de colonnes
 
@@ -86,7 +86,7 @@ void GrapheLabyrinthe::creerConnexions(vector<vector<int>> tab)
         for (int j = 0; j < g; j++)
         {
 
-            ajouterSommet(i, j);
+            graphe.ajouterSommet(i, j);
         }
     }
 
@@ -105,7 +105,7 @@ void GrapheLabyrinthe::creerConnexions(vector<vector<int>> tab)
                     // sud
                     a = "SS";
                     Position p2 = {i + 1, j};
-                    ajouterArrete(p1, p2, a);
+                    graphe.ajouterArrete(p1, p2, a);
                 }
 
                 if (i - 1 >= 0 && tab[i - 1][j] == 0)// si le voisin nord du sommet est 0
@@ -113,7 +113,7 @@ void GrapheLabyrinthe::creerConnexions(vector<vector<int>> tab)
                     // nord
                     a = "NN";
                     Position p2 = {i - 1, j};
-                    ajouterArrete(p1, p2, a);
+                    graphe.ajouterArrete(p1, p2, a);
                 }
 
                 if (j + 1 < n && tab[i][j + 1] == 0)// si le voisin est du sommet est 0
@@ -121,7 +121,7 @@ void GrapheLabyrinthe::creerConnexions(vector<vector<int>> tab)
                     // est
                     a = "EE";
                     Position p2 = {i, j + 1};
-                    ajouterArrete(p1, p2, a);
+                    graphe.ajouterArrete(p1, p2, a);
                 }
 
                 if (j - 1 >= 0 && tab[i][j - 1] == 0)// si le voisin ouest du sommet est 0
@@ -129,11 +129,13 @@ void GrapheLabyrinthe::creerConnexions(vector<vector<int>> tab)
                     // ouest
                     a = "OO";
                     Position p2 = {i, j - 1};
-                    ajouterArrete(p1, p2, a);
+                    graphe.ajouterArrete(p1, p2, a);
                 }
             }
         }
     }
+
+    return graphe;
 };
 
 //Récupère les voisins du sommet

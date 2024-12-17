@@ -62,7 +62,7 @@ public:
 
     void ajouterArrete(pair<int, int>, pair<int, int>, string);
 
-    void creerConnexions(int[][8]);
+    void creerConnexions(vector<vector<int>>);
 
     std::vector<Voisins> voisinde(pair<int, int>);
 

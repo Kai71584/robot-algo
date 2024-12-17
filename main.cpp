@@ -10,6 +10,7 @@ description: parcours le labyrinthe avec un Robot
 #include <unordered_set>
 #include "graphe.h"
 #include "robot.h"
+
 using namespace std;
 
 void labyrinthe(Robot r, graphe g, pair<int, int> depart, pair<int, int> arrive)
@@ -99,7 +100,7 @@ int main()
     graphe monGraphe;
 
     // tableau qui sert à populer notre graphe
-    int monTab[7][8] = {
+    vector<vector<int>> monTab = {
         {1, 1, 1, 1, 1, 1, 1, 1},
         {1, 0, 0, 0, 1, 1, 1, 1},
         {1, 0, 1, 1, 0, 1, 0, 1},
@@ -107,6 +108,8 @@ int main()
         {1, 0, 0, 1, 0, 1, 0, 1},
         {1, 0, 0, 0, 0, 0, 1, 1},
         {1, 1, 1, 1, 1, 1, 1, 1}};
+
+
 
     // on popule le graph
     monGraphe.creerConnexions(monTab);

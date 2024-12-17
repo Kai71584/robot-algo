@@ -16,6 +16,7 @@ description: fonctions de la classe graphe
 #include <vector>
 #include <utility>
 #include <set>
+#include <vector>
 
 using namespace std;
 
@@ -65,13 +66,15 @@ void graphe::ajouterArrete(pair<int, int> p1, pair<int, int> p2, std::string a)
     listeadjacence2[p1].insert(f);
 };
 
-void graphe::creerConnexions(int tab[][8])
+void graphe::creerConnexions(vector<vector<int>> tab)
 {
     std::string a;
-    
-    int n = 7;
-    int g = 8;
 
+    
+    int n = tab.size(); // nombre de lignes
+    int g = tab[0].size();//nombre de colonnes
+    
+    
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < g; j++)

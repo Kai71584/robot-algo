@@ -15,17 +15,46 @@ using namespace std;
 void labyrinthe(Robot r, graphe g, pair<int, int> depart, pair<int, int> arrive)
 {
     cout << "Notre robot pointe vers ";
-    r.afficheDir(); 
-    cout <<", il commence en: (" << depart.first << "," << depart.second << ") et fini le labyrinthe en arrivant à: (" << arrive.first << "," << arrive.second << ")." << endl;
+    r.afficheDir();
+    cout << ", il commence en: (" << depart.first << "," << depart.second << ") et fini le labyrinthe en arrivant à: (" << arrive.first << "," << arrive.second << ")." << endl;
 
-    // on fait un DFS de base pour simuler le robot
-    g.DFS(depart);
+    // on fait un DFS pour parcourir le graphe
+
+    unordered_set<std::pair<int, int>, pair_hash> visite; // collection des noeuds visités
+
+    stack<pair<int, int>> pile; // pile des voisins/noeuds à visiter
+    stack<pair<int, int>> chemin; // pile des voisins/noeuds sur le chemin
+
+    visite.insert(depart); // ajoute depart dans visite
+    pile.push(depart);     // on ajoute le départ comme noeud à visiter
+    chemin.push(depart);
+    pair<int, int> pcourant = depart;//on commence à départ
+
+    while (!pile.empty() && pcourant!=arrive)
+    {
+
+        pcourant = pile.top();
+        pile.pop();
+
+        cout << pcourant.first << "," << pcourant.second << " " << endl;
+        
+        
+
+        for (Voisins &voisinsommet : g.voisinde(pcourant)) // récupère les voisins du sommetcourant
+        {
+            if (visite.find(voisinsommet.getPositionnement()) == visite.end()) // vérifie qu'on n'a pas encore visité les voisins de sommetcourant
+            {
+                pile.push(voisinsommet.getPositionnement());     // ajoute voisinsommet dans la pile
+                visite.insert(voisinsommet.getPositionnement()); // ajoute voisinsommet dans visite
+            }
+        }
+    }
 }
 
 int main()
 {
 
-    cout << "Ceci est notre main"<<endl;
+    cout << "Ceci est notre main" << endl;
 
     // onh crée notre robot et note graphe
     Robot monRobot = Robot("SS");
@@ -48,12 +77,8 @@ int main()
     pair<int, int> depart = {1, 1};
     pair<int, int> fin = {4, 6};
 
-    
-
     // parcours du labyrinthe
     labyrinthe(monRobot, monGraphe, depart, fin);
-
-   
 
     return 0;
 }

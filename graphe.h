@@ -56,8 +56,9 @@ class Voisins
 struct Labyrinthe
 {
     private:
-    Labyrinthe();
+    
     public:
+    Labyrinthe();
     vector<vector<int>> generer_labyrinthe(){
 
     vector<vector<int>> monTab = {

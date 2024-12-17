@@ -114,10 +114,10 @@ int main()
     // on crée notre robot et note GrapheLabyrinthe
     Robot monRobot = Robot();
     GrapheLabyrinthe monGraphe;
-    Labyrinthe labyrinthe();
+    Labyrinthe labyrinthe;
 
 
-    vector<vector<int>>tableau = labyrinthe().generer_labyrinthe();
+    vector<vector<int>>tableau = labyrinthe.generer_labyrinthe();
     // on popule le GrapheLabyrinthe
     monGraphe.creerConnexions(tableau);
 

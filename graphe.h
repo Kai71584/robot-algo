@@ -36,7 +36,8 @@ struct pair_hash
 class Voisins
 {
     private:
-    pair<int, int> positionnement;
+    Position p;
+    //pair<int,int> positionnement;
     std::string direction;
     public:
     pair<int,int> getPositionnement();
@@ -45,10 +46,22 @@ class Voisins
     void setDirection(string);
     // Définition de l'opérateur < pour permettre la comparaison
     bool operator<(const Voisins& other) const {
-        return positionnement < other.positionnement; // Comparaison par position
+        return p.getposition() < other.p.getposition(); // Comparaison par position
     }
 
     
+};
+
+class Position {
+
+    private:
+    pair<int,int> position;
+    public:
+    Position();
+    Position(pair<int,int>);
+    pair<int,int> getposition() const{
+        return this->position;
+    };
 };
 
 
@@ -66,11 +79,11 @@ public:
 
     std::vector<Voisins> voisins_possibles(pair<int, int>);
 
-    void DFS(pair<int, int>);
+    void DFS(Position position);
 
 private:
     set<pair<int, int>> positions;
 
-    std::unordered_map<pair<int, int>, set<Voisins>, pair_hash> listeadjacence2;
+    std::unordered_map<Position, set<Voisins>, pair_hash> listeadjacence2;
 };
 

@@ -24,14 +24,19 @@ GrapheLabyrinthe::GrapheLabyrinthe()
 {
 }
 
-pair<int, int> Voisins::getPositionnement()
-{
-    return this->positionnement;
+Position::Position(std::pair<int,int> pos){
+
+    this->position=pos;
 }
 
-void Voisins::setPositionnement(std::pair<int, int> position)
+pair<int, int> Voisins::getPositionnement()
 {
-    this->positionnement = position;
+    return this->p.getposition();
+}
+
+void Voisins::setPositionnement(std::pair<int, int> pos)
+{
+    this->p.position = pos;
 }
 
 std::string Voisins::getDirection()
@@ -64,7 +69,9 @@ void GrapheLabyrinthe::ajouterArrete(pair<int, int> p1, pair<int, int> p2, std::
     f.setPositionnement(p2);
     f.setDirection(a);
 
-    listeadjacence2[p1].insert(f);
+    Position position(p1);
+
+    listeadjacence2[position].insert(f);
 };
 
 void GrapheLabyrinthe::creerConnexions(vector<vector<int>> tab)
@@ -135,13 +142,13 @@ void GrapheLabyrinthe::creerConnexions(vector<vector<int>> tab)
 //Récupère les voisins du sommet
 vector<Voisins> GrapheLabyrinthe::voisins_possibles(pair<int, int> p1)
 {
-
+    Position p(p1);
     vector<Voisins> voisinss;
 
-    if (listeadjacence2.find(p1) != listeadjacence2.end())
+    if (listeadjacence2.find(p) != listeadjacence2.end())
     {
 
-        for (auto voisin : listeadjacence2[p1])
+        for (auto voisin : listeadjacence2[p])
         {
             voisinss.push_back(voisin);
         }
@@ -151,9 +158,10 @@ vector<Voisins> GrapheLabyrinthe::voisins_possibles(pair<int, int> p1)
 };
 
 //modèle initiale pour le labyrinthe
-void GrapheLabyrinthe::DFS(pair<int, int> p1)
+void GrapheLabyrinthe::DFS(Position position)
 {
-
+    pair<int, int> p1 = position.getposition();
+    
     unordered_set<std::pair<int, int>, pair_hash> visite;
 
     stack<pair<int, int>> pile;

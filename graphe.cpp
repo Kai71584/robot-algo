@@ -63,7 +63,6 @@ void graphe::ajouterArrete(pair<int, int> p1, pair<int, int> p2, std::string a)
     Voisins f;
     f.setPositionnement(p2);
     f.setDirection(a);
-    // voisin[p1].insert(make_pair(p2,a));
 
     listeadjacence2[p1].insert(f);
 };

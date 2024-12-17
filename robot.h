@@ -38,6 +38,7 @@ public:
     // fait tourner le robot à droite
     void roterD();
 
+    // oriente le robot vers le prochain noeud
     void mouvementOriente(pair<int,int>,pair<int,int>);
 };
 

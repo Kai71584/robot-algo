@@ -1,7 +1,7 @@
 /*
 fichier: robot.cpp
 autheur: William Roy
-dernière MAJ: 2024-12-09 15:00 William
+dernière MAJ: 2024-12-17 15:00 William
 description: déclarations de la classe graphe
 */
 
@@ -74,10 +74,3 @@ private:
     std::unordered_map<pair<int, int>, set<Voisins>, pair_hash> listeadjacence2;
 };
 
-
-
-
-
-    //unordered_set<pair<int, int>, std::string> voisin;
-
-    //std::unordered_map<pair<int, int>, vector<pair<int, int>, std::string>, pair_hash> listeadjacence;

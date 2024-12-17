@@ -74,8 +74,8 @@ void graphe::creerConnexions(vector<vector<int>> tab)
     size_t ligne = tab.size(); // nombre de lignes
     size_t colonne = tab[0].size();//nombre de colonnes
     
-    int n=ligne;
-    int g=colonne;
+    int n=static_cast<int>(ligne);
+    int g=static_cast<int>(colonne);
 
     for (int i = 0; i < n; i++)
     {

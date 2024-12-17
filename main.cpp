@@ -13,13 +13,13 @@ description: parcours le labyrinthe avec un Robot
 
 using namespace std;
 
-void labyrinthe(Robot r, graphe g, pair<int, int> depart, pair<int, int> arrive)
+void trouver_chemin(Robot r, GrapheLabyrinthe g, pair<int, int> depart, pair<int, int> arrive)
 {
     cout << "Notre robot pointe vers ";
     r.afficheDir();
     cout << ", il commence en: (" << depart.first << "," << depart.second << ") et fini le labyrinthe en arrivant à: (" << arrive.first << "," << arrive.second << ")." << endl;
 
-    // on fait un DFS pour parcourir le graphe
+    // on fait un DFS pour parcourir le GrapheLabyrinthe
 
     unordered_set<std::pair<int, int>, pair_hash> visite; // collection des noeuds visités
 
@@ -56,7 +56,7 @@ void labyrinthe(Robot r, graphe g, pair<int, int> depart, pair<int, int> arrive)
         // tant qu'il y as des voisins a faire et que on est pas arrivé à la fin
         while (aucunVoisinAFaire && pcourant != arrive)
         {
-            for (Voisins &voisinsommet : g.voisinde(chemin.top())) // récupère les voisins du sommetcourant
+            for (Voisins &voisinsommet : g.voisins_possibles(chemin.top())) // récupère les voisins du sommetcourant
             {
 
                 if (visite.find(voisinsommet.getPositionnement()) == visite.end()) // vérifie qu'on n'a pas encore visité les voisins de sommetcourant
@@ -95,11 +95,11 @@ int main()
 
     cout << "Ceci est notre main" << endl;
 
-    // on crée notre robot et note graphe
+    // on crée notre robot et note GrapheLabyrinthe
     Robot monRobot = Robot();
-    graphe monGraphe;
+    GrapheLabyrinthe monGraphe;
 
-    // tableau qui sert à populer notre graphe
+    // tableau qui sert à populer notre GrapheLabyrinthe
     vector<vector<int>> monTab = {
         {1, 1, 1, 1, 1, 1, 1, 1},
         {1, 0, 0, 0, 1, 1, 1, 1},
@@ -111,7 +111,7 @@ int main()
 
 
 
-    // on popule le graphe
+    // on popule le GrapheLabyrinthe
     monGraphe.creerConnexions(monTab);
 
     // on crée notre départ et notre entrée
@@ -119,7 +119,7 @@ int main()
     pair<int, int> fin = {3, 3};
 
     // parcours du labyrinthe
-    labyrinthe(monRobot, monGraphe, depart, fin);
+    trouver_chemin(monRobot, monGraphe, depart, fin);
 
     return 0;
 }

@@ -2,7 +2,7 @@
 fichier: robot.cpp
 autheur: William Roy
 dernière MAJ: 2024-12-17 13:40 William
-description: fonctions de la classe graphe
+description: fonctions de la classe GrapheLabyrinthe
 */
 
 #include "graphe.h"
@@ -20,7 +20,7 @@ description: fonctions de la classe graphe
 
 using namespace std;
 
-graphe::graphe()
+GrapheLabyrinthe::GrapheLabyrinthe()
 {
 }
 
@@ -44,7 +44,7 @@ void Voisins::setDirection(string d)
     this->direction = d;
 }
 
-void graphe::ajouterSommet(int a, int b)
+void GrapheLabyrinthe::ajouterSommet(int a, int b)
 {
 
     std::pair<int, int> t = make_pair(a, b);
@@ -57,7 +57,7 @@ void graphe::ajouterSommet(int a, int b)
     positions.insert(t);
 };
 
-void graphe::ajouterArrete(pair<int, int> p1, pair<int, int> p2, std::string a)
+void GrapheLabyrinthe::ajouterArrete(pair<int, int> p1, pair<int, int> p2, std::string a)
 {
 
     Voisins f;
@@ -67,7 +67,7 @@ void graphe::ajouterArrete(pair<int, int> p1, pair<int, int> p2, std::string a)
     listeadjacence2[p1].insert(f);
 };
 
-void graphe::creerConnexions(vector<vector<int>> tab)
+void GrapheLabyrinthe::creerConnexions(vector<vector<int>> tab)
 {
     std::string a;
 
@@ -133,7 +133,7 @@ void graphe::creerConnexions(vector<vector<int>> tab)
 };
 
 //Récupère les voisins du sommet
-vector<Voisins> graphe::voisinde(pair<int, int> p1)
+vector<Voisins> GrapheLabyrinthe::voisins_possibles(pair<int, int> p1)
 {
 
     vector<Voisins> voisinss;
@@ -151,7 +151,7 @@ vector<Voisins> graphe::voisinde(pair<int, int> p1)
 };
 
 //modèle initiale pour le labyrinthe
-void graphe::DFS(pair<int, int> p1)
+void GrapheLabyrinthe::DFS(pair<int, int> p1)
 {
 
     unordered_set<std::pair<int, int>, pair_hash> visite;
@@ -170,7 +170,7 @@ void graphe::DFS(pair<int, int> p1)
 
         cout << pcourant.first << "," << pcourant.second << " " << endl;
 
-        for (Voisins &voisinsommet : voisinde(pcourant)) // récupère les voisins du sommetcourant
+        for (Voisins &voisinsommet : voisins_possibles(pcourant)) // récupère les voisins du sommetcourant
         {
             if (visite.find(voisinsommet.getPositionnement()) == visite.end()) // vérifie qu'on n'a pas encore visité les voisins de sommetcourant
             {

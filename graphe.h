@@ -2,7 +2,7 @@
 fichier: robot.cpp
 autheur: William Roy
 dernière MAJ: 2024-12-17 15:00 William
-description: déclarations de la classe graphe
+description: déclarations de la classe GrapheLabyrinthe
 */
 
 #include <iostream>
@@ -52,11 +52,11 @@ class Voisins
 };
 
 
-class graphe
+class GrapheLabyrinthe
 {
 
 public:
-    graphe();
+    GrapheLabyrinthe();
 
     void ajouterSommet(int, int);
 
@@ -64,7 +64,7 @@ public:
 
     void creerConnexions(vector<vector<int>>);
 
-    std::vector<Voisins> voisinde(pair<int, int>);
+    std::vector<Voisins> voisins_possibles(pair<int, int>);
 
     void DFS(pair<int, int>);
 

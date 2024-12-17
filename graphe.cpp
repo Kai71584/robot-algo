@@ -1,7 +1,7 @@
 /*
 fichier: robot.cpp
 autheur: William Roy
-dernière MAJ: 2024-12-17 17:40 William et P-A
+dernière MAJ: 2024-12-17 18:15 William et P-A
 description: fonctions de la classe GrapheLabyrinthe
 */
 
@@ -71,72 +71,6 @@ void GrapheLabyrinthe::ajouterArrete(Position p1, Position p2, string a)
     listeArretes[p1].insert(f);
 };
 
-/*GrapheLabyrinthe GrapheLabyrinthe::labyrinthe_to_graphe(vector<vector<int>> tab)
-{
-    string a;
-    GrapheLabyrinthe graphe;
-    size_t ligne = tab.size();      // nombre de lignes
-    size_t colonne = tab[0].size(); // nombre de colonnes
-
-    int n = static_cast<int>(ligne);
-    int g = static_cast<int>(colonne);
-
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < g; j++)
-        {
-
-            graphe.ajouterSommet(i, j);
-        }
-    }
-
-    for (int i = 0; i < n; i++) // double boucle for pour parcourir le tableau
-    {
-        for (int j = 0; j < g; j++)
-        {
-
-            if (tab[i][j] == 0) // si le sommet est 0
-            {
-
-                Position p1 = {i, j};
-
-                if (i + 1 < n && tab[i + 1][j] == 0)// si le voisin sud du sommet est 0
-                {
-                    // sud
-                    a = "SS";
-                    Position p2 = {i + 1, j};
-                    graphe.ajouterArrete(p1, p2, a);
-                }
-
-                if (i - 1 >= 0 && tab[i - 1][j] == 0)// si le voisin nord du sommet est 0
-                {
-                    // nord
-                    a = "NN";
-                    Position p2 = {i - 1, j};
-                    graphe.ajouterArrete(p1, p2, a);
-                }
-
-                if (j + 1 < n && tab[i][j + 1] == 0)// si le voisin est du sommet est 0
-                {
-                    // est
-                    a = "EE";
-                    Position p2 = {i, j + 1};
-                    graphe.ajouterArrete(p1, p2, a);
-                }
-
-                if (j - 1 >= 0 && tab[i][j - 1] == 0)// si le voisin ouest du sommet est 0
-                {
-                    // ouest
-                    a = "OO";
-                    Position p2 = {i, j - 1};
-                    graphe.ajouterArrete(p1, p2, a);
-                }
-            }
-        }
-    }
-
-    return graphe;
-};*/
 
 //Récupère les voisins du sommet
 vector<Voisins> GrapheLabyrinthe::voisins_possibles(Position p1)

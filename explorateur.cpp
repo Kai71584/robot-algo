@@ -1,3 +1,11 @@
+/*
+fichier: explorateur.cpp
+autheur: William Roy
+dernière MAJ: 2024-12-17 18:15
+description: fonctions de la classe explorateur
+*/
+
+
 #include "explorateur.h"
 
 

@@ -1,7 +1,7 @@
 /*
 fichier: robot.cpp
 autheur: William Roy
-dernière MAJ: 2024-12-17 17:40 William et P-A
+dernière MAJ: 2024-12-17 18:15 William et P-A
 description: déclarations de la classe GrapheLabyrinthe
 */
 #ifndef __GRAPHE_H__
@@ -89,8 +89,6 @@ public:
     void ajouterSommet(int, int);
 
     void ajouterArrete(Position, Position, string);
-
-    //GrapheLabyrinthe labyrinthe_to_graphe(vector<vector<int>>);
 
     std::vector<Voisins> voisins_possibles(Position);
 

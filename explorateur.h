@@ -1,3 +1,11 @@
+/*
+fichier: explorateur.h
+autheur: William Roy
+dernière MAJ: 2024-12-17 18:15
+description: déclarations de la classe explorateyr
+*/
+
+
 #ifndef __EXPLORATEUR_H__
 #define __EXPLORATEUR_H__
 
@@ -22,9 +30,9 @@ private:
 public:
 Explorateur(){};
 
-GrapheLabyrinthe labyrinthe_to_graphe(vector<vector<int>>);
+GrapheLabyrinthe labyrinthe_to_graphe(vector<vector<int>>); //crée le graphe
 
-void trouver_chemin(Robot , GrapheLabyrinthe , Position, Position);
+void trouver_chemin(Robot , GrapheLabyrinthe , Position, Position); //navigue le labyrinthe
 };
 
 #endif

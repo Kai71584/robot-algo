@@ -32,26 +32,28 @@ void labyrinthe(Robot r, graphe g, pair<int, int> depart, pair<int, int> arrive)
 
     while (!pile.empty() && pcourant != arrive)
     {
-        //Orientation
-        r.mouvementOriente(pcourant,pile.top());
-        
+        // Orientation
+        r.mouvementOriente(pcourant, pile.top());
+
+        if (pile.top() != pcourant)
+        {
+            // avancer
+            r.avancer();
+        }
+
         pcourant = pile.top();
         chemin.push(pcourant);
         visite.insert(pcourant);
         pile.pop();
-        
 
-        //avancer
-        r.avancer();
-
-        //On affiche notre position actuelle
+        // On affiche notre position actuelle
         cout << "Point: ";
         cout << chemin.top().first << "," << chemin.top().second << " " << endl;
 
         bool aucunVoisinAFaire = true;
 
-        //tant qu'il y as des voisins a faire et que on est pas arrivé à la fin
-        while (aucunVoisinAFaire && pcourant!=arrive)
+        // tant qu'il y as des voisins a faire et que on est pas arrivé à la fin
+        while (aucunVoisinAFaire && pcourant != arrive)
         {
             for (Voisins &voisinsommet : g.voisinde(chemin.top())) // récupère les voisins du sommetcourant
             {
@@ -59,22 +61,32 @@ void labyrinthe(Robot r, graphe g, pair<int, int> depart, pair<int, int> arrive)
                 if (visite.find(voisinsommet.getPositionnement()) == visite.end()) // vérifie qu'on n'a pas encore visité les voisins de sommetcourant
                 {
                     pile.push(voisinsommet.getPositionnement()); // ajoute voisinsommet dans la pile
-                    aucunVoisinAFaire = false; //Il y as des voisins à faire, donc on veux sortir de cette boucle
+                    aucunVoisinAFaire = false;                   // Il y as des voisins à faire, donc on veux sortir de cette boucle
                 }
             }
-            
-            //si aucun voisin à faire
+
+            // si aucun voisin à faire
             if (aucunVoisinAFaire)
             {
-                chemin.pop(); //recule
-                
-                //affiche la nouvelle position
-                cout << "Point: ";
+                pair<int, int> tempCourant = chemin.top();
+                chemin.pop(); // recule
+
+                cout << "Point temp: ";
+                cout << tempCourant.first << "," << tempCourant.second << " " << endl;
+
+                r.mouvementOriente(tempCourant, chemin.top());
+
+                if (chemin.top() != tempCourant)
+                {
+                    // avancer
+                    r.avancer();
+                }
+
+                // affiche la nouvelle position
+                cout << "Point après ajustement: ";
                 cout << chemin.top().first << "," << chemin.top().second << " " << endl;
-                
             }
         }
-
     }
 }
 

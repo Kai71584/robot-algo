@@ -33,12 +33,12 @@ GrapheLabyrinthe Explorateur::labyrinthe_to_graphe(vector<vector<int>> tab)
         for (int j = 0; j < g; j++)
         {
 
-            if (tab[i][j] == 0) // si le sommet est 0
+            if (tab[i][j] == 1) // si le sommet est 1
             {
 
                 Position p1 = {i, j};
 
-                if (i + 1 < n && tab[i + 1][j] == 0)// si le voisin sud du sommet est 0
+                if (i + 1 < n && tab[i + 1][j] == 1)// si le voisin sud du sommet est 1
                 {
                     // sud
                     a = "SS";
@@ -46,7 +46,7 @@ GrapheLabyrinthe Explorateur::labyrinthe_to_graphe(vector<vector<int>> tab)
                     graphe.ajouterArrete(p1, p2, a);
                 }
 
-                if (i - 1 >= 0 && tab[i - 1][j] == 0)// si le voisin nord du sommet est 0
+                if (i - 1 >= 0 && tab[i - 1][j] == 1)// si le voisin nord du sommet est 
                 {
                     // nord
                     a = "NN";
@@ -54,7 +54,7 @@ GrapheLabyrinthe Explorateur::labyrinthe_to_graphe(vector<vector<int>> tab)
                     graphe.ajouterArrete(p1, p2, a);
                 }
 
-                if (j + 1 < n && tab[i][j + 1] == 0)// si le voisin est du sommet est 0
+                if (j + 1 < n && tab[i][j + 1] == 1)// si le voisin est du sommet est 1
                 {
                     // est
                     a = "EE";
@@ -62,7 +62,7 @@ GrapheLabyrinthe Explorateur::labyrinthe_to_graphe(vector<vector<int>> tab)
                     graphe.ajouterArrete(p1, p2, a);
                 }
 
-                if (j - 1 >= 0 && tab[i][j - 1] == 0)// si le voisin ouest du sommet est 0
+                if (j - 1 >= 0 && tab[i][j - 1] == 1)// si le voisin ouest du sommet est 1
                 {
                     // ouest
                     a = "OO";

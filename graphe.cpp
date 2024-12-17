@@ -86,17 +86,17 @@ void graphe::creerConnexions(vector<vector<int>> tab)
         }
     }
 
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) // double boucle for pour parcourir le tableau
     {
         for (int j = 0; j < g; j++)
         {
 
-            if (tab[i][j] == 0)
+            if (tab[i][j] == 0) // si le sommet est 0
             {
 
                 pair<int, int> p1 = {i, j};
 
-                if (i + 1 < n && tab[i + 1][j] == 0)
+                if (i + 1 < n && tab[i + 1][j] == 0)// si le voisin sud du sommet est 0
                 {
                     // sud
                     a = "SS";
@@ -104,7 +104,7 @@ void graphe::creerConnexions(vector<vector<int>> tab)
                     ajouterArrete(p1, p2, a);
                 }
 
-                if (i - 1 >= 0 && tab[i - 1][j] == 0)
+                if (i - 1 >= 0 && tab[i - 1][j] == 0)// si le voisin nord du sommet est 0
                 {
                     // nord
                     a = "NN";
@@ -112,7 +112,7 @@ void graphe::creerConnexions(vector<vector<int>> tab)
                     ajouterArrete(p1, p2, a);
                 }
 
-                if (j + 1 < n && tab[i][j + 1] == 0)
+                if (j + 1 < n && tab[i][j + 1] == 0)// si le voisin est du sommet est 0
                 {
                     // est
                     a = "EE";
@@ -120,7 +120,7 @@ void graphe::creerConnexions(vector<vector<int>> tab)
                     ajouterArrete(p1, p2, a);
                 }
 
-                if (j - 1 >= 0 && tab[i][j - 1] == 0)
+                if (j - 1 >= 0 && tab[i][j - 1] == 0)// si le voisin ouest du sommet est 0
                 {
                     // ouest
                     a = "OO";
@@ -132,6 +132,7 @@ void graphe::creerConnexions(vector<vector<int>> tab)
     }
 };
 
+//Récupère les voisins du sommet
 vector<Voisins> graphe::voisinde(pair<int, int> p1)
 {
 
@@ -146,9 +147,10 @@ vector<Voisins> graphe::voisinde(pair<int, int> p1)
         }
     }
 
-    return voisinss;
+    return voisinss;// retourne les voisins du sommet
 };
 
+//modèle initiale pour le labyrinthe
 void graphe::DFS(pair<int, int> p1)
 {
 

@@ -95,7 +95,7 @@ int main()
 
     cout << "Ceci est notre main" << endl;
 
-    // onh crée notre robot et note graphe
+    // on crée notre robot et note graphe
     Robot monRobot = Robot();
     graphe monGraphe;
 
@@ -111,7 +111,7 @@ int main()
 
 
 
-    // on popule le graph
+    // on popule le graphe
     monGraphe.creerConnexions(monTab);
 
     // on crée notre départ et notre entrée

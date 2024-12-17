@@ -22,40 +22,54 @@ void labyrinthe(Robot r, graphe g, pair<int, int> depart, pair<int, int> arrive)
 
     unordered_set<std::pair<int, int>, pair_hash> visite; // collection des noeuds visités
 
-    stack<pair<int, int>> pile; // pile des voisins/noeuds à visiter
+    stack<pair<int, int>> pile;   // pile des voisins/noeuds à visiter
     stack<pair<int, int>> chemin; // pile des voisins/noeuds sur le chemin
 
     visite.insert(depart); // ajoute depart dans visite
     pile.push(depart);     // on ajoute le départ comme noeud à visiter
     chemin.push(depart);
-    pair<int, int> pcourant = depart;//on commence à départ
+    pair<int, int> pcourant = depart; // on commence à départ
 
-    while (!pile.empty() && pcourant!=arrive)
+    while (!pile.empty() && pcourant != arrive)
     {
 
         pcourant = pile.top();
         chemin.push(pcourant);
+        visite.insert(pcourant);
         pile.pop();
 
-
+        //On affiche notre position actuelle
         cout << "Point: ";
         cout << chemin.top().first << "," << chemin.top().second << " " << endl;
-        
-        
-        cout << "Voisins: "<<endl;
-        for (Voisins &voisinsommet : g.voisinde(pcourant)) // récupère les voisins du sommetcourant
+
+        bool aucunVoisinAFaire = true;
+
+        //tant qu'il y as des voisins a faire et que on est pas arrivé à la fin
+        while (aucunVoisinAFaire && pcourant!=arrive)
         {
-            cout << voisinsommet.getPositionnement().first << "," << voisinsommet.getPositionnement().second << " " << endl;
-            if (visite.find(voisinsommet.getPositionnement()) == visite.end()) // vérifie qu'on n'a pas encore visité les voisins de sommetcourant
+            for (Voisins &voisinsommet : g.voisinde(chemin.top())) // récupère les voisins du sommetcourant
             {
-                pile.push(voisinsommet.getPositionnement());     // ajoute voisinsommet dans la pile
-                visite.insert(voisinsommet.getPositionnement()); // ajoute voisinsommet dans visite
+
+                if (visite.find(voisinsommet.getPositionnement()) == visite.end()) // vérifie qu'on n'a pas encore visité les voisins de sommetcourant
+                {
+                    pile.push(voisinsommet.getPositionnement()); // ajoute voisinsommet dans la pile
+                    aucunVoisinAFaire = false; //Il y as des voisins à faire, donc on veux sortir de cette boucle
+                }
+            }
+            
+            //si aucun voisin à faire
+            if (aucunVoisinAFaire)
+            {
+                chemin.pop(); //recule
+                
+                //affiche la nouvelle position
+                cout << "Point: ";
+                cout << chemin.top().first << "," << chemin.top().second << " " << endl;
+                
             }
         }
-    }
 
-    
-    
+    }
 }
 
 int main()
